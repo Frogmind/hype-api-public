@@ -13,8 +13,8 @@ hype.ui.find(entity: Entity): UIWidget
 ```
 
 ### Parameters
-- name: string - object name containing a UI widget
-- entity: Entity - entity whose object contains a UI widget; also searches direct children
+- name - object name containing a UI widget
+- entity - entity whose object contains a UI widget; also searches direct children
 
 ### Notes
 - Returns a UIWidget handle used to access children and properties
@@ -168,7 +168,7 @@ UIWidget:findChild(name: string): (Layout|Button|Text|ProgressBar|ProgressCircle
 ```
 
 ### Parameters
-- name: string - child widget name
+- name - child widget name
 
 ### Notes
 - Searches recursively under the widgetâ€™s root canvas
@@ -255,7 +255,7 @@ UIWidget:setVisible(visible: boolean): ()
 ```
 
 ### Parameters
-- visible: boolean - show or hide the whole UI
+- visible - show or hide the whole UI
 
 ## getText
 
@@ -635,7 +635,7 @@ Subscribes to button press start.
 ### Signature
 
 ```luau
-Button:onStart(component: LuauComponentInstance, callback: function(component: LuauComponentInstance, event: { source: Button, touchId: number, x: number, y: number
+Button:onStart(component: ComponentInstance, callback: function(component: ComponentInstance, event: { source: Button, touchId: number, x: number, y: number
 ```
 
 ## onEnd
@@ -646,7 +646,7 @@ Subscribes to button press end.
 ### Signature
 
 ```luau
-Button:onEnd(component: LuauComponentInstance, callback: function(component: LuauComponentInstance, event: { source: Button, touchId: number, x: number, y: number
+Button:onEnd(component: ComponentInstance, callback: function(component: ComponentInstance, event: { source: Button, touchId: number, x: number, y: number
 ```
 
 ## onMove
@@ -657,18 +657,18 @@ Subscribes to button move (2D touch).
 ### Signature
 
 ```luau
-Button:onMove(component: LuauComponentInstance, callback: function(component: LuauComponentInstance, event: { source: Button, touchId: number, x: number, y: number
+Button:onMove(component: ComponentInstance, callback: function(component: ComponentInstance, event: { source: Button, touchId: number, x: number, y: number
 ```
 
 ## onMove3D
 
 Subscribes to button move with 3D raycast info.
-hit?: table })): Subscription
+hit: table? })): Subscription
 
 ### Signature
 
 ```luau
-Button:onMove3D(component: LuauComponentInstance, callback: function(component: LuauComponentInstance, event: { source: Button, touchId: number, x: number, y: number,
+Button:onMove3D(component: ComponentInstance, callback: function(component: ComponentInstance, event: { source: Button, touchId: number, x: number, y: number,
 ```
 
 ### Notes

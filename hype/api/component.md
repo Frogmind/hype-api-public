@@ -31,11 +31,6 @@ function ExampleLocalComponent:onStart()
     -- Runs after all components finished onInit
 end
 
-function ExampleLocalComponent:onValue(player, value: number)
-    self.value = value
-    hype.node.pushOutput(self, "OutputValue", value)
-end
-
 function ExampleLocalComponent:onUpdate(deltaTime: number)
     -- Per-frame logic (only runs if you subscribed)
 end
@@ -47,12 +42,6 @@ function ExampleLocalComponent:onDestroy()
         self.onUpdateSub = nil
     end
 end
-
-hype.node.registerComponent(ExampleLocalComponent, "ExampleLocalComponent", {
-    { name = "Value", type = hype.node.DataType.Number, default = 100, handler = ExampleLocalComponent.onValue },
-}, {
-    { name = "OutputValue", type = hype.node.DataType.Number },
-})
 
 return ExampleLocalComponent
 ```
@@ -72,7 +61,7 @@ hype.component.define(id: string): LuauComponentDef
 ```
 
 ### Parameters
-- id: string - unique component identifier
+- id - unique component identifier
 
 ### Notes
 - The returned table is the component "class"; instances inherit from it
@@ -94,11 +83,11 @@ Returns the owning Entity of a component instance.
 ### Signature
 
 ```luau
-hype.component.getEntity(componentInstance: LuauComponentInstance): Entity
+hype.component.getEntity(componentInstance: ComponentInstance): Entity
 ```
 
 ### Parameters
-- componentInstance: LuauComponentInstance - an instance previously created by the engine
+- componentInstance - an instance previously created by the engine
 
 ### Notes
 - Raises an error if the value is not a valid component instance

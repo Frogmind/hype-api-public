@@ -9,12 +9,12 @@ Subscribes a callback that is invoked every frame for the given component instan
 ### Signature
 
 ```luau
-hype.core.events.onUpdate(component: LuauComponentInstance, callback: function(component: LuauComponentInstance, dt: number)): Subscription
+hype.core.events.onUpdate(component: ComponentInstance, callback: (component: ComponentInstance, dt: number): ()): Subscription
 ```
 
 ### Parameters
-- component: LuauComponentInstance - the component instance whose update callback you want to receive
-- callback: function(component: LuauComponentInstance, dt: number) - function called each frame; return value is ignored
+- component - the component instance whose update callback you want to receive
+- callback - function called each frame; return value is ignored
 
 ### Notes
 - dt is the frame delta time in seconds

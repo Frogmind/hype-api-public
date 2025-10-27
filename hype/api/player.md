@@ -23,8 +23,8 @@ hype.player.events.onJoin(component: ComponentInstance, callback: (component: Co
 ```
 
 ### Parameters
-- component: ComponentInstance - the component instance owning the subscription (used for auto-cleanup)
-- callback: (component: ComponentInstance, player: Player): () - invoked when a player joins
+- component - the component instance owning the subscription (used for auto-cleanup)
+- callback - invoked when a player joins
 
 ### Example
 
@@ -43,8 +43,8 @@ hype.player.events.onLeave(component: ComponentInstance, callback: (component: C
 ```
 
 ### Parameters
-- component: ComponentInstance - the component instance owning the subscription
-- callback: (component: ComponentInstance, player: Player): () - invoked when a player leaves
+- component - the component instance owning the subscription
+- callback - invoked when a player leaves
 
 ### Example
 
@@ -63,7 +63,7 @@ hype.player.getByIndex(index: number): Player?
 ```
 
 ### Parameters
-- index: number - zero-based player index
+- index - zero-based player index
 
 ### Notes
 - Returns nil if no player with that index exists
@@ -98,11 +98,11 @@ Registers a player skin prefab for use by a player.
 ### Signature
 
 ```luau
-hype.player.registerSkin(prefab: PrefabAsset): ()
+hype.player.registerSkin(prefab: Entity): ()
 ```
 
 ### Parameters
-- prefab: PrefabAsset - prefab containing the skin
+- prefab - prefab root entity
 
 ### Example
 

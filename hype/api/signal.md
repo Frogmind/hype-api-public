@@ -32,12 +32,12 @@ Sends a local signal.
 ### Signature
 
 ```luau
-hype.localSignal.send(filter: { id: string, entity?: Entity }, args: Tuple): ()
+hype.localSignal.send(filter: { id: string, entity: Entity? }, args: Tuple): ()
 ```
 
 ### Parameters
-- filter: table - filter table with required field `id` and optional `entity` to restrict delivery to listeners bound to that entity.
-- args: Tuple - zero or more payload values delivered to subscribers.
+- filter - filter table with required field `id` and optional `entity` to restrict delivery to listeners bound to that entity.
+- args - zero or more payload values delivered to subscribers.
 
 ### Notes
 - Delivery is limited to the current runtime (no network).
@@ -56,13 +56,13 @@ Subscribes a component to a local signal.
 ### Signature
 
 ```luau
-hype.localSignal.subscribe(filter: { id: string, entity?: Entity }, component: ComponentInstance, callback: (self: ComponentInstance, args: Tuple) -> ()): Subscription
+hype.localSignal.subscribe(filter: { id: string, entity: Entity? }, component: ComponentInstance, callback: (self: ComponentInstance, args: Tuple) -> ()): Subscription
 ```
 
 ### Parameters
-- filter: table - table with required `id` and optional `entity`.
-- component: ComponentInstance - owner; auto‑unsubscribes on destroy.
-- callback: function - invoked with payload.
+- filter - table with required `id` and optional `entity`.
+- component - owner; auto‑unsubscribes on destroy.
+- callback - invoked with payload.
 
 ### Example
 
@@ -77,12 +77,12 @@ Sends a targeted remote signal.
 ### Signature
 
 ```luau
-hype.remoteSignal.send(filter: { id: string, playerIndex?: number, includePlayers?: { number }, excludePlayers?: { number }, crossSession?: boolean }, args: Tuple): ()
+hype.remoteSignal.send(filter: { id: string, playerIndex: number?, includePlayers: { number }?, excludePlayers: { number }?, crossSession: boolean? }, args: Tuple): ()
 ```
 
 ### Parameters
-- filter: table - required `id`; optionally exactly one of `playerIndex`, `includePlayers`, `excludePlayers` (server only). Host may set `crossSession = true`.
-- args: Tuple - payload values.
+- filter - required `id`; optionally exactly one of `playerIndex`, `includePlayers`, `excludePlayers` (server only). Host may set `crossSession = true`.
+- args - payload values.
 
 ### Notes
 - If no targeting field is given (server) all players receive the signal.
@@ -107,9 +107,9 @@ hype.remoteSignal.subscribe(filter: { id: string }, component: ComponentInstance
 ```
 
 ### Parameters
-- filter: table - required `id`.
-- component: ComponentInstance - subscription owner.
-- callback: function - Server signature: (self: ComponentInstance, player: Player, args: Tuple) -> (); Client signature: (self: ComponentInstance, args: Tuple) -> ().
+- filter - required `id`.
+- component - subscription owner.
+- callback - Server signature
 
 ### Notes
 - Player parameter is only provided on server side (originating player of the signal).

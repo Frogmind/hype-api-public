@@ -13,7 +13,7 @@ hype.world.playAudio(audio: AudioAsset|integer): ()
 ```
 
 ### Parameters
-- audio: AudioAsset|integer - handle returned by hype.asset.findAudio
+- audio - handle returned by hype.asset.findAudio
 
 ### Notes
 - For streaming (music) assets: plays once (non-looping) currently
@@ -31,36 +31,31 @@ end
 
 ## spawn
 
-Spawns a copy of the given Entity or prefab into the world.
+Spawns a copy of the given Entity into the world.
 
 ### Signature
 
 ```luau
-hype.world.spawn(source: Entity | PrefabAsset, parent: Entity?, boneName: string?, position: vector, scale: vector?, rotation: vector?): {Entity}
+hype.world.spawn(source: Entity, position: vector, rotation: vector?, scale: vector?): Entity
 ```
 
 ### Parameters
-- source: Entity - entity or prefab to spawn
-- parent: Entity? - optional parent entity to attach to
-- boneName: string? - optional bone/socket name on the parent
-- position: vector - spawn position (world or relative when parent provided)
-- scale: vector? - uniform or per‑axis scale (default: (1,1,1))
-- rotation: vector? - Euler XYZ rotation in degrees (default: (0,0,0))
+- source - entity to spawn
+- position - spawn position (world or relative when parent provided)
+- rotation - Quaternion rotation
+- scale - uniform or per‑axis scale (default
 
 ### Notes
 - Returns nil if spawning fails
-- Rotation currently accepts Euler angles; quaternion support may be added later
-- Result is an array of spawned entities (root first)
 
 ### Example
 
 ```luau
 local prefab = hype.asset.findPrefab("TreeLarge")
 if prefab then
-  local spawned = hype.world.spawn(prefab, nil, nil, vector.create(0,0,0))
-  if spawned then
-    local root = spawned[1]
-    -- manipulate root
+  local spawnedObject = hype.world.spawn(prefab, vector.create(0,0,0))
+  if spawnedObject then
+    -- do something with the spawned object
   end
 end
 ```
@@ -76,7 +71,7 @@ hype.world.destroy(entity: Entity): ()
 ```
 
 ### Parameters
-- entity: Entity - entity to remove
+- entity - entity to remove
 
 ### Notes
 - Does nothing if the entity is already destroyed or invalid
