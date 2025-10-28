@@ -238,9 +238,9 @@ function EventEliminateLocal:onPrepare()
   self:reset()
   hype.localSignal.send({ id = "GM_Scoring_SetupRewardMoney" }, self.rewardMoneyTopN, self.rewardMoneyDefault)
 
+  local spawnPos = game:getService("Modes"):getPositionSpawn()
   game:getService("Modes"):setPositionJoin(spawnPos)
   game:getService("Modes"):enableAutoTeleport(false)
-  local spawnPos = game:getService("Modes"):getPositionSpawn()
   print("GM: Prepare Eliminate at "..spawnPos.x..", "..spawnPos.y..", "..spawnPos.z)
   
   local prefab = hype.asset.findPrefab("EventEliminate")
