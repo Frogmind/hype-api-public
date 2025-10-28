@@ -56,9 +56,9 @@ end
 - Usually game map is spawned here, notify the local script to prepare (e.g., spawning)
 
 ```luau
-function EventEliminateRemote:prepare(playerIndex: number?, spawnPos)
+function EventEliminateRemote:prepare(playerIndex: number?)
 	-- Let local script know about prepare
-	hype.remoteSignal.send({ id = "G_Eliminate_Prepare", playerIndex = playerIndex }, spawnPos)
+	hype.remoteSignal.send({ id = "G_Eliminate_Prepare", playerIndex = playerIndex })
 end
 ```
 
@@ -234,14 +234,15 @@ end
 function EventEliminateLocal:onDone()
 end
 
-function EventEliminateLocal:onPrepare(spawnPos)
+function EventEliminateLocal:onPrepare()
   self:reset()
   hype.localSignal.send({ id = "GM_Scoring_SetupRewardMoney" }, self.rewardMoneyTopN, self.rewardMoneyDefault)
 
-  print("GM: Prepare Eliminate at "..spawnPos.x..", "..spawnPos.y..", "..spawnPos.z)
   game:getService("Modes"):setPositionJoin(spawnPos)
   game:getService("Modes"):enableAutoTeleport(false)
-
+  local spawnPos = game:getService("Modes"):getPositionSpawn()
+  print("GM: Prepare Eliminate at "..spawnPos.x..", "..spawnPos.y..", "..spawnPos.z)
+  
   local prefab = hype.asset.findPrefab("EventEliminate")
   self.spawnedObject = hype.world.spawn(
     prefab,
