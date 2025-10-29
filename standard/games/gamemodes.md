@@ -2,6 +2,8 @@
 
 Game modes follow local-remote component pattern with system provided callbacks. Here is breakdown and example code for those callbacks.
 
+---
+
 ## REMOTE
 
 ## Hype level callbacks (Remote)
@@ -170,6 +172,8 @@ function EventEliminateRemote:checkStatus()
     end
 end
 ```
+
+---
 
 ## LOCAL
 
