@@ -29,6 +29,30 @@ if explosionAudio then
 end
 ```
 
+## vibration
+
+Triggers a device vibration (haptic).
+
+### Signature
+
+```luau
+hype.world.vibration(type: string): ()
+```
+
+### Parameters
+- type - one of: "Basic", "Impact", "Selection", "Success", "Warning", "Error", "Heavy", "Medium", "Light", "Rigid", "Soft"
+
+### Notes
+- Unrecognized names fall back to "Basic"
+- No-op on server builds
+
+### Example
+
+```luau
+hype.world.vibration("Basic")     -- basic vibrate
+hype.world.vibration("Impact")    -- impact
+```
+
 ## spawn
 
 Spawns a copy of the given Entity into the world.

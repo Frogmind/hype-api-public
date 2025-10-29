@@ -211,6 +211,32 @@ for i, child in ipairs(entity:getChildren()) do
 end
 ```
 
+## getVisual
+
+Returns this entity's visual component or nil if none exists.
+
+### Signature
+
+```luau
+Entity:getVisual(): VisualComponent?
+```
+
+### Parameters
+- self - the entity (implicit)
+
+## createVisual
+
+Create visual component for entity if it doesn't exists.
+
+### Signature
+
+```luau
+Entity:createVisual()
+```
+
+### Parameters
+- self - the entity (implicit)
+
 ## attachComponent
 
 Attaches a component to an entity.

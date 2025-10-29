@@ -1,6 +1,90 @@
 # Visual
+## Summary
+Visual component and material access.
+
+## Details
+The `hype.visual` namespace exposes VisualComponent methods for controlling
+an entity's rendering-related properties such as materials, visibility and
+shadow casting.
+
+Types:
+- VisualComponent: Opaque handle for an entity's visual component.
+- VisualMaterial: Opaque handle to a visual material resource.
 
 ## API Reference
+
+## getMaterials
+
+Returns the materials assigned to this visual component.
+
+### Signature
+
+```luau
+VisualComponent:getMaterials(): {VisualMaterial}
+```
+
+### Notes
+- Returns a list with up to 4 materials; empty slots are omitted.
+
+## setMaterial
+
+Sets a material to a specific slot.
+
+### Signature
+
+```luau
+VisualComponent:setMaterial(material: VisualMaterial, slotIndex: number): void
+```
+
+### Parameters
+- material - material handle to assign
+- slotIndex - 0-based material slot index
+
+## setVisible
+
+Sets visibility of this visual component.
+
+### Signature
+
+```luau
+VisualComponent:setVisible(visible: boolean): void
+```
+
+### Parameters
+- visible - true to show, false to hide
+
+## isVisible
+
+Returns whether this visual component is visible.
+
+### Signature
+
+```luau
+VisualComponent:isVisible(): boolean
+```
+
+## setCastShadow
+
+Enables or disables dynamic shadow casting.
+
+### Signature
+
+```luau
+VisualComponent:setCastShadow(enabled: boolean): void
+```
+
+### Parameters
+- enabled - true to cast shadows dynamically, false to disable
+
+## isCastShadow
+
+Returns whether dynamic shadow casting is enabled.
+
+### Signature
+
+```luau
+VisualComponent:isCastShadow(): boolean
+```
 
 ## getMaterial
 
@@ -27,22 +111,6 @@ Returns all visual materials available in the world.
 ```luau
 hype.visual.getAllMaterials(): {VisualMaterial}
 ```
-
-## getMaterialsByEntity
-
-Returns the materials used by an entity in its material slots.
-
-### Signature
-
-```luau
-hype.visual.getMaterialsByEntity(entity: Entity): {VisualMaterial}
-```
-
-### Parameters
-- entity - entity whose materials to fetch
-
-### Notes
-- Returns a list with up to 4 materials (empty slots omitted)
 
 ## getArtStyle
 
@@ -239,20 +307,6 @@ Sets tiling repeat (scale). Each component clamped to [0,100].
 ```luau
 VisualMaterial:setTilingRepeat({ x: number?, y: number? }): ()
 ```
-
-## applyOnEntity
-
-Applies this material to an entity's material slot.
-
-### Signature
-
-```luau
-VisualMaterial:applyOnEntity(entity: Entity, slotIndex: number): ()
-```
-
-### Parameters
-- entity - target entity
-- slotIndex - material slot index [0..3]
 
 ## getId
 

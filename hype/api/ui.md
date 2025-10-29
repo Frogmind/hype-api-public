@@ -143,6 +143,95 @@ Creates an Image widget under the root UI and returns its handle.
 hype.ui.createImage(): Image
 ```
 
+## getScreenSize
+
+Gets the screen size with UI scale applied.
+
+### Signature
+
+```luau
+hype.ui.getScreenSize(): vector
+```
+
+### Notes
+- Returns the pixel size used for UI rendering (scaled)
+- Equals getScreenSizeAbsolute() multiplied by getUIScale()
+
+## getScreenSizeAbsolute
+
+Gets the screen size without UI scale.
+
+### Signature
+
+```luau
+hype.ui.getScreenSizeAbsolute(): vector
+```
+
+### Notes
+- Returns the unscaled UI canvas size after viewport adjustments
+
+## getUIScale
+
+Gets the current UI scale factor.
+
+### Signature
+
+```luau
+hype.ui.getUIScale(): number
+```
+
+## getScreenWidth
+
+Gets scaled screen width (UI scale applied).
+
+### Signature
+
+```luau
+hype.ui.getScreenWidth(): number
+```
+
+### Notes
+- Equivalent to getScreenSize().x
+
+## getScreenHeight
+
+Gets scaled screen height (UI scale applied).
+
+### Signature
+
+```luau
+hype.ui.getScreenHeight(): number
+```
+
+### Notes
+- Equivalent to getScreenSize().y
+
+## getScreenWidthAbsolute
+
+Gets unscaled screen width (no UI scale).
+
+### Signature
+
+```luau
+hype.ui.getScreenWidthAbsolute(): number
+```
+
+### Notes
+- Equivalent to getScreenSizeAbsolute().x
+
+## getScreenHeightAbsolute
+
+Gets unscaled screen height (no UI scale).
+
+### Signature
+
+```luau
+hype.ui.getScreenHeightAbsolute(): number
+```
+
+### Notes
+- Equivalent to getScreenSizeAbsolute().y
+
 ## instantiate
 
 Instantiates a saved UI from a UI component into the live UI.
