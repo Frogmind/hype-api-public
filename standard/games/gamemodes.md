@@ -185,7 +185,8 @@ end
 
 ```luau
 function EventEliminateLocal:onInit()
-  hype.localSignal.subscribe({ id = "G_Eliminate_ShowOptions" }, self, self.onShowOptions)
+  self.myIdent = "Eliminate"
+  
   hype.remoteSignal.subscribe({ id = "G_Eliminate_Activate" }, self, self.onActivate)
   hype.remoteSignal.subscribe({ id = "G_Eliminate_Deactivate" }, self, self.onDeactivate)
   hype.remoteSignal.subscribe({ id = "G_Eliminate_Prepare" }, self, self.onPrepare)
@@ -206,20 +207,22 @@ end
 
 ### onStart()
 - Called after onInit()
+- Register your gamemode locally
 
 ```luau
 function EventEliminateLocal:onStart()
+  game:getService("Modes"):registerGameMode(self.myIdent, self)
 end
 ```
 
 ## Game manager callbacks (Local)
 
-### onShowOptions(myGameModeId: number)
+### showOptions(myGameModeId: number)
 - Called when game launch is initiated
 - Sending GM_GameModeStart instantly will skip any settings process (like selecting a map)
 
 ```luau
-function EventEliminateLocal:onShowOptions(myGameModeId: number)
+function EventEliminateLocal:showOptions(myGameModeId: number)
   self.gameModeId = myGameModeId
   hype.localSignal.send({ id = "GM_GameModeStart" }, myGameModeId)
 end
@@ -231,6 +234,18 @@ end
 ```luau
 function EventEliminateLocal:onAssignTeam(teamIdx: number)
   self.team = teamIdx
+end
+```
+
+### getInfo()
+- UI info about gamemode. If not implemented, gamemode id will be used as name with empty description
+
+```luau
+function EventEliminateLocal:getInfo()
+	return {
+		name = "Elimination Game",
+		description = "Last man standing wins!",
+	}
 end
 ```
 
