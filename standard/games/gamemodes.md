@@ -317,3 +317,98 @@ function EventEliminateLocal:eliminateMyself(player)
   game:getService("Player"):teleport(game:getService("Modes"):getPositionSpectate())
 end
 ```
+
+---
+
+## TEAM VS TEAM Game Modes
+
+Team vs Team game modes follow the same local–remote component pattern but require additional coordination between teams rather than individual players. These game modes often include objectives like capturing points, eliminating the opposing team, or accumulating score over time.
+
+### General Notes
+
+When implementing a Team vs Team game mode:
+
+- Matchmaking is always done automatically. Simply set maxTeams > 1 in game mode options
+- Each player belongs to a team (playerIdxToTeamIdx must be maintained correctly, you can store and even edit this table)
+- Ensure both Remote (server authority) and Local (client view/UI) are aware of team contexts
+- Decide on win conditions - eg "last team standing", "highest score after timer", "objective completed first"
+
+```luau
+
+-- Remote logic
+
+function EventTeamBattleRemote:create()
+    self:reset()
+end
+
+function EventTeamBattleRemote:reset()
+	self.playerIdxToTeamIdx = nil
+	self.teamIdxToAlive = {}
+end
+
+function EventTeamBattleRemote:activate(playerIndex: number?, playerIdxToTeamIdx: table, numTeams: number)
+	-- Store the team mapping
+	if (self.playerIdxToTeamIdx == nil) then
+		-- Grand start
+		self.playerIdxToTeamIdx = playerIdxToTeamIdx
+		for _, teamIdx in pairs(self.playerIdxToTeamIdx or {}) do
+			self.teamIdxToAlive[teamIdx] = (self.teamIdxToAlive[teamIdx] or 0) + 1
+		end
+	end
+	-- Let local script know about activate
+	hype.remoteSignal.send({ id = "G_TeamBattle_Activate", playerIndex = playerIndex }, numTeams, self.optLevelIdCurrent)
+end
+
+function EventTeamBattleRemote:onPlayerEliminated(player)
+    local teamIdx = self.playerIdxToTeamIdx[player.index]
+    if not teamIdx then return end
+
+    self.teamIdxToAlive[teamIdx] = self.teamIdxToAlive[teamIdx] - 1
+    if self.teamIdxToAlive[teamIdx] <= 0 then
+        print("Team " .. teamIdx .. " eliminated!")
+        self.teamIdxToAlive[teamIdx] = 0
+        self:checkTeamStatus()
+    end
+end
+
+function EventTeamBattleRemote:checkTeamStatus()
+    local remainingTeams = {}
+    for teamIdx, count in pairs(self.teamIdxToAlive) do
+        if count > 0 then
+            table.insert(remainingTeams, teamIdx)
+        end
+    end
+
+    if #remainingTeams == 1 then
+        print("Team " .. remainingTeams[1] .. " wins!")
+        hype.remoteSignal.send({ id = "G_TeamBattle_Done" }, remainingTeams[1])
+    elseif #remainingTeams == 0 then
+        print("Draw — no teams left!")
+        hype.remoteSignal.send({ id = "G_TeamBattle_Done" }, -1)
+    end
+end
+
+-- Local logic
+function EventTeamBattleLocal:onInit()
+  self.myIdent = "TeamBattle"
+
+  hype.remoteSignal.subscribe({ id = "G_TeamBattle_Done" }, self, self.onTeamBattleDone)
+  hype.remoteSignal.subscribe({ id = "MM_AssignTeam" }, self, self.onAssignTeam)
+  self.team = -1
+end
+
+function EventTeamBattleLocal:onAssignTeam(teamIdx: number) 
+	self.team = teamIdx
+end
+
+function EventTeamBattleLocal:onTeamBattleDone(teamIdx)
+	if teamIdx == -1 then
+		print("The match ended in a draw.")
+	elseif teamIdx == self.team then
+		print("Your team won!")
+	else
+		print("Team " .. teamIdx .. " won the match.")
+	end
+end
+
+```
