@@ -1,4 +1,12 @@
 # Physics
+## Summary
+API for managing entitys physics.
+
+## Details
+Types:
+- Type.Static: For objects that dont move, but can collide with dynamic objects
+- Type.Kinematic: For objects that are moved by logic outside of physics simulation
+- Type.Dynamic: For objects that are simulated by the physics engine
 
 ## API Reference
 
@@ -9,21 +17,23 @@ Applies a linear impulse (or direct velocity change) to an entity's physics body
 ### Signature
 
 ```luau
-hype.physics.addForce(entity: Entity, force: vector, extraParams: { isLocal: boolean?, ignoreMass: boolean?, offset: vector? }?): ()
+hype.physics.addForce(entity: Entity, force: vector, extraParams: { isLocal: boolean?, ignoreMass: boolean?, offset: vector?, maxSpeed: number? }?): ()
 ```
 
 ### Parameters
 - entity - target entity
-- force - impulse (N·s) or velocity change if ignoreMass=true; ignored if near zero
+- force - impulse (NÂ·s) or velocity change if ignoreMass=true; ignored if near zero
 - extraParams - optional parameters
   - extraParams.isLocal - interpret force (and offset) in local space (default
   - extraParams.ignoreMass - apply raw velocity change instead of impulse (default
   - extraParams.offset - point of application relative to entity origin (local if isLocal=true); adds torque (default
+  - extraParams.maxSpeed - if > 0, caps the force so that the resulting speed will not go over maxSpeed along the force direction. Doesn't slow down the object if it's going
+- faster than maxSpeed (default
 
 ### Notes
 - Zero-length forces are ignored
 - If offset is provided a torque impulse may also be generated
-- When ignoreMass=true the provided vector is treated as Δv (mass independent)
+- When ignoreMass=true the provided vector is treated as Î”v (mass independent)
 
 ### Example
 
@@ -43,7 +53,7 @@ hype.physics.addTorque(entity: Entity, torque: vector, extraParams: { isLocal: b
 
 ### Parameters
 - entity - target entity
-- torque - torque impulse (N·m·s); ignored if near zero
+- torque - torque impulse (NÂ·mÂ·s); ignored if near zero
 - extraParams - optional parameters
   - extraParams.isLocal - interpret torque in local space (default
   - extraParams.ignoreMass - apply angular velocity change directly (default
@@ -116,6 +126,43 @@ hype.physics.overlapBox(position: vector, halfSize: vector, extraParams: { group
 ```luau
 local hits = hype.physics.overlapBox(vector.create(0,1,0), vector.create(1,2,1), { groupFilter = { 1, 3 } })
 ```
+
+## setVelocity
+
+Sets the entity's linear velocity.
+
+### Signature
+
+```luau
+hype.physics.setVelocity(entity: Entity, velocity: vector, extraParams: { isLocal: boolean? }?): ()
+```
+
+## setAngularVelocity
+
+Sets the entity's angular velocity (radians per second).
+
+### Signature
+
+```luau
+hype.physics.setAngularVelocity(entity: Entity, angularVelocity: vector, extraParams: { isLocal: boolean? }?): ()
+```
+
+## attach
+
+Attaches a physics component to the entity if missing and returns a handle.
+
+### Signature
+
+```luau
+hype.physics.attach(entity: Entity, type: string?): EntityPhysics
+```
+
+### Parameters
+- entity - target entity
+- type - optional physics type
+
+### Notes
+- If the entity already has physics, returns a handle to it and ignores type.
 
 ## raycast
 
@@ -221,7 +268,7 @@ Entity:addForce(force: vector, extraParams: { isLocal: boolean?, ignoreMass: boo
 ```
 
 ### Parameters
-- force - impulse (N·s) or velocity change if ignoreMass=true; ignored if near zero
+- force - impulse (NÂ·s) or velocity change if ignoreMass=true; ignored if near zero
 - extraParams - optional parameters
   - extraParams.isLocal - interpret force (and offset) in local space (default
   - extraParams.ignoreMass - apply raw velocity change instead of impulse (default
@@ -231,7 +278,7 @@ Entity:addForce(force: vector, extraParams: { isLocal: boolean?, ignoreMass: boo
 ### Notes
 - Zero-length forces are ignored
 - If offset is provided a torque impulse may also be generated
-- When ignoreMass=true the provided vector is treated as Δv (mass independent)
+- When ignoreMass=true the provided vector is treated as Î”v (mass independent)
 
 ### Example
 
@@ -250,7 +297,7 @@ Entity:addTorque(torque: vector, extraParams: { isLocal: boolean?, ignoreMass: b
 ```
 
 ### Parameters
-- torque - torque impulse (N·m·s); ignored if near zero
+- torque - torque impulse (NÂ·mÂ·s); ignored if near zero
 - extraParams - optional parameters
   - extraParams.isLocal - interpret torque in local space (default
   - extraParams.ignoreMass - apply angular velocity change directly (default
@@ -274,6 +321,26 @@ Gets the current linear velocity of the physics body.
 
 ```luau
 EntityPhysics:getVelocity(): vector
+```
+
+## setVelocity
+
+Sets the current linear velocity of the physics body.
+
+### Signature
+
+```luau
+EntityPhysics:setVelocity(velocity: vector, extraParams: { isLocal: boolean? }?): ()
+```
+
+## setAngularVelocity
+
+Sets the current angular velocity of the physics body.
+
+### Signature
+
+```luau
+EntityPhysics:setAngularVelocity(angularVelocity: vector, extraParams: { isLocal: boolean? }?): ()
 ```
 
 ## getId

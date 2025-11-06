@@ -17,6 +17,19 @@ hype.particle.get(entity: Entity): ParticleComponent?
 ### Parameters
 - entity - the entity
 
+## getAllParticles
+
+Returns all available particle effect names.
+
+### Signature
+
+```luau
+hype.particle.getAllParticles(): {string}
+```
+
+### Notes
+- The list contains particle group names configured in the current world
+
 ## setEnabled
 
 Enables or disables particle emission.

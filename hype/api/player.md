@@ -91,6 +91,31 @@ local me = hype.player.getLocal()
 if me then print("I am ", me.index) end
 ```
 
+## getAll
+
+Returns all connected players as an array.
+
+### Signature
+
+```luau
+hype.player.getAll(): Player[]
+```
+
+### Returns
+Array of Player tables; nil on server.
+
+### Notes
+- Order is unspecified; do not rely on it being stable
+- Each entry is a Player table with fields like `index`, `name`, `entity`, and `isHost` (client only)
+
+### Example
+
+```luau
+for _, p in ipairs(hype.player.getAll() or {}) do
+  print(p.index, p.name)
+end
+```
+
 ## registerSkin
 
 Registers a player skin prefab for use by a player.

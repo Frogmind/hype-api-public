@@ -86,6 +86,21 @@ Returns whether dynamic shadow casting is enabled.
 VisualComponent:isCastShadow(): boolean
 ```
 
+## attach
+
+Create and return visual component for entity if it doesn't exist.
+
+### Signature
+
+```luau
+hype.visual.attach(entity: entity, meshName: string, textureName: string): VisualComponent?
+```
+
+### Parameters
+- entity to attach the visual component
+- mesh resource name
+- texture resource name
+
 ## getMaterial
 
 Finds a visual material by name.
