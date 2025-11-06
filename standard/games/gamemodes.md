@@ -332,6 +332,7 @@ When implementing a Team vs Team game mode:
 - Each player belongs to a team (playerIdxToTeamIdx must be maintained correctly, you can store and even edit this table)
 - Ensure both Remote (server authority) and Local (client view/UI) are aware of team contexts
 - Decide on win conditions - eg "last team standing", "highest score after timer", "objective completed first"
+- **Currently, teams are distributed with the same amount of players.** Matchmaking automatically balances teams evenly when possible
 
 ```luau
 
