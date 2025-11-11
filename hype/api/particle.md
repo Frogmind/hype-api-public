@@ -6,7 +6,7 @@ Particle component access for entities.
 
 ## get
 
-Returns this entity's particle component or nil if none exists.
+Returns entity's particle component or nil if none exists.
 
 ### Signature
 
@@ -14,21 +14,15 @@ Returns this entity's particle component or nil if none exists.
 hype.particle.get(entity: Entity): ParticleComponent?
 ```
 
-### Parameters
-- entity - the entity
-
-## getAllParticles
+## getAllNames
 
 Returns all available particle effect names.
 
 ### Signature
 
 ```luau
-hype.particle.getAllParticles(): {string}
+hype.particle.getAllNames(): {string}
 ```
-
-### Notes
-- The list contains particle group names configured in the current world
 
 ## setEnabled
 

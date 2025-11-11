@@ -17,7 +17,7 @@ hype.world.playAudio(audio: AudioAsset|integer): ()
 
 ### Notes
 - For streaming (music) assets: plays once (non-looping) currently
-- For SFX assets: creates a transient one‑shot that auto releases
+- For SFX assets: creates a transient one‑shot
 - Silently does nothing if the asset id is invalid
 
 ### Example
@@ -29,29 +29,21 @@ if explosionAudio then
 end
 ```
 
-## vibration
+## vibrate
 
 Triggers a device vibration (haptic).
 
 ### Signature
 
 ```luau
-hype.world.vibration(type: string): ()
+hype.world.vibrate(type: string): ()
 ```
 
 ### Parameters
-- type - one of: "Basic", "Impact", "Selection", "Success", "Warning", "Error", "Heavy", "Medium", "Light", "Rigid", "Soft"
+- type - one of
 
 ### Notes
 - Unrecognized names fall back to "Basic"
-- No-op on server builds
-
-### Example
-
-```luau
-hype.world.vibration("Basic")     -- basic vibrate
-hype.world.vibration("Impact")    -- impact
-```
 
 ## spawn
 
@@ -100,10 +92,3 @@ hype.world.destroy(entity: Entity): ()
 ### Notes
 - Does nothing if the entity is already destroyed or invalid
 - Children are cleaned up automatically
-
-### Example
-
-```luau
-local e = someSpawnedEntity
-hype.world.destroy(e)
-```

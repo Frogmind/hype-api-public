@@ -224,6 +224,58 @@ Entity:getVisual(): VisualComponent?
 ### Parameters
 - self - the entity (implicit)
 
+## attachToEntity
+
+Attaches this entity to a parent entity. Supports optional local offset or bone attachment.
+
+### Signature
+
+```luau
+Entity:attachToEntity(parent: Entity, offset: vector?, boneName: string?, fitProp: boolean?): void
+```
+
+### Parameters
+- self - the entity to attach (implicit)
+- parent - the target parent entity
+- offset - local-space position offset applied after attaching (optional)
+- boneName - if provided, attaches to a named bone of a skinned parent (optional)
+- fitProp - when attaching a weapon or hat to a bone, heuristically positions/rotates item to fit hand or head (optional; defaults to false)
+
+### Notes
+- Raises an error if either entity is invalid or if the entities cannot be glued.
+- When attaching to a bone, the parent must have a skinned visual and a loaded skeleton; otherwise an error is raised.
+- Providing a boneName sets the child to follow that bone; offset is interpreted in the bone's local space.
+- Physics is updated for glued attachments: compound bodies are rebuilt and activated as needed.
+- Typical standard bone names: "arm_2.L" (left hand), "arm_2.R" (right hand), "head" (head), "body" (body), "leg_2.L" (left foot), etc...
+
+### Example
+
+```luau
+-- Attach with local offset
+sword:attachToEntity(player, vector.create(0, 0.2, 0))
+
+-- Attach to a hand bone and try to auto-fit
+sword:attachToEntity(player, vector.create(0, 0, 0), "RightHand", true)
+```
+
+## detachFromParent
+
+Detaches this entity from its parent, restoring separate transforms and physics.
+
+### Signature
+
+```luau
+Entity:detachFromParent(): void
+```
+
+### Parameters
+- self - the entity to detach (implicit)
+
+### Notes
+- If the entity has no parent, this is a no-op.
+- Raises an error if detaching fails due to missing internal parenting data.
+- If the entity was previously glued, compound physics for parent and child are rebuilt and reactivated.
+
 ## attachComponent
 
 Attaches a component to an entity.

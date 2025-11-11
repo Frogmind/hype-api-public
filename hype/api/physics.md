@@ -1,12 +1,12 @@
 # Physics
 ## Summary
-API for managing entitys physics.
+API for managing entity's physics.
 
 ## Details
 Types:
-- Type.Static: For objects that dont move, but can collide with dynamic objects
-- Type.Kinematic: For objects that are moved by logic outside of physics simulation
-- Type.Dynamic: For objects that are simulated by the physics engine
+- Type.Static: For entities that don't move, but can collide with physical entities
+- Type.Kinematic: For entities that are moved by logic outside physics simulation
+- Type.Dynamic: For entities that are simulated by the physics engine
 
 ## API Reference
 
@@ -154,7 +154,7 @@ Attaches a physics component to the entity if missing and returns a handle.
 ### Signature
 
 ```luau
-hype.physics.attach(entity: Entity, type: string?): EntityPhysics
+hype.physics.attach(entity: Entity, type: Type?): EntityPhysics
 ```
 
 ### Parameters
@@ -232,7 +232,7 @@ Subscribes to collision start events for this entity's physics, filtered by coll
 ### Signature
 
 ```luau
-EntityPhysics:onCollisionStart(groupFilter: {number}, component: LuauComponent, callback: (component: LuauComponent, other: Entity?): ()): LuauSubscription
+EntityPhysics:onCollisionStart(groupFilter: {number}, component: ComponentInstance, callback: (component: ComponentInstance, other: Entity?): ()): LuauSubscription
 ```
 
 ### Parameters
@@ -248,7 +248,7 @@ Subscribes to collision end events for this entity's physics, filtered by collis
 ### Signature
 
 ```luau
-EntityPhysics:onCollisionEnd(groupFilter: {number}, component: LuauComponent, callback: (component: LuauComponent, other: Entity?): ()): LuauSubscription
+EntityPhysics:onCollisionEnd(groupFilter: {number}, component: ComponentInstance, callback: (component: ComponentInstance, other: Entity?): ()): LuauSubscription
 ```
 
 ### Parameters
