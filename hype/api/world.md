@@ -45,6 +45,22 @@ hype.world.vibrate(type: string): ()
 ### Notes
 - Unrecognized names fall back to "Basic"
 
+## isPlayer
+
+Returns the player index for a player entity, or nil otherwise.
+
+### Signature
+
+```luau
+hype.world.isPlayer(entity: Entity): integer|nil
+```
+
+### Parameters
+- entity - entity to check
+
+### Notes
+- Returns an integer player index when the entity belongs to a player; otherwise returns nil
+
 ## spawn
 
 Spawns a copy of the given Entity into the world.

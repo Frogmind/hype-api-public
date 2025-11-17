@@ -10,6 +10,22 @@ Types:
 
 ## API Reference
 
+## get
+
+Gets the physics component handle for an entity, if present.
+
+### Signature
+
+```luau
+hype.physics.get(entity: Entity): EntityPhysics?
+```
+
+### Parameters
+- entity - target entity to query
+
+### Returns
+The EntityPhysics handle, or nil if the entity has no physics
+
 ## addForce
 
 Applies a linear impulse (or direct velocity change) to an entity's physics body.
@@ -195,16 +211,6 @@ local hit = hype.physics.raycast(vector.create(0,2,0), vector.create(0,-5,0))
 if hit.entity then print('Hit', hit.entity) end
 ```
 
-## getPhysics
-
-Returns a physics handle for the given entity or nil if not present.
-
-### Signature
-
-```luau
-hype.physics.getPhysics(entity: Entity): EntityPhysics?
-```
-
 ## getAllMaterials
 
 Returns all physical materials available in the world.
@@ -224,6 +230,376 @@ Returns a physical material by name or nil if not found.
 ```luau
 hype.physics.getMaterial(name: string): PhysicalMaterial?
 ```
+
+## getType
+
+Gets the physics type of this entity.
+
+### Signature
+
+```luau
+EntityPhysics:getType(): Physics.Type
+```
+
+## setType
+
+Sets the physics type of this entity.
+
+### Signature
+
+```luau
+EntityPhysics:setType(type: Physics.Type): ()
+```
+
+## getMaterial
+
+Gets the physical material index assigned to this entity.
+
+### Signature
+
+```luau
+EntityPhysics:getMaterial(): number
+```
+
+## setMaterial
+
+Sets the physical material.
+
+### Signature
+
+```luau
+EntityPhysics:setMaterial(material: number|string): ()
+```
+
+### Notes
+- Accepts a material index (number) or a material name (string).
+
+## isActive
+
+Returns whether the physics body is active in simulation.
+
+### Signature
+
+```luau
+EntityPhysics:isActive(): boolean
+```
+
+## setActive
+
+Activates or deactivates the physics body.
+
+### Signature
+
+```luau
+EntityPhysics:setActive(active: boolean): ()
+```
+
+## isPreserveVelocity
+
+Returns whether velocity is preserved when changing type.
+
+### Signature
+
+```luau
+EntityPhysics:isPreserveVelocity(): boolean
+```
+
+## setPreserveVelocity
+
+Sets whether to preserve velocity on type change. Not implemented.
+
+### Signature
+
+```luau
+EntityPhysics:setPreserveVelocity(enabled: boolean): ()
+```
+
+## isSensor
+
+Returns whether this body acts as a sensor (no physical response).
+
+### Signature
+
+```luau
+EntityPhysics:isSensor(): boolean
+```
+
+## setSensor
+
+Enables or disables sensor mode.
+
+### Signature
+
+```luau
+EntityPhysics:setSensor(enabled: boolean): ()
+```
+
+## isStartSleeping
+
+Returns whether the body should start sleeping.
+
+### Signature
+
+```luau
+EntityPhysics:isStartSleeping(): boolean
+```
+
+## isLimitMovementX
+
+Returns if linear movement along X is limited.
+
+### Signature
+
+```luau
+EntityPhysics:isLimitMovementX(): boolean
+```
+
+## setLimitMovementX
+
+Enables/disables linear movement limit along X.
+
+### Signature
+
+```luau
+EntityPhysics:setLimitMovementX(enabled: boolean): ()
+```
+
+## isLimitMovementY
+
+Returns if linear movement along Y is limited.
+
+### Signature
+
+```luau
+EntityPhysics:isLimitMovementY(): boolean
+```
+
+## setLimitMovementY
+
+Enables/disables linear movement limit along Y.
+
+### Signature
+
+```luau
+EntityPhysics:setLimitMovementY(enabled: boolean): ()
+```
+
+## isLimitMovementZ
+
+Returns if linear movement along Z is limited.
+
+### Signature
+
+```luau
+EntityPhysics:isLimitMovementZ(): boolean
+```
+
+## setLimitMovementZ
+
+Enables/disables linear movement limit along Z.
+
+### Signature
+
+```luau
+EntityPhysics:setLimitMovementZ(enabled: boolean): ()
+```
+
+## isLimitTurningX
+
+Returns if angular turning around X is limited.
+
+### Signature
+
+```luau
+EntityPhysics:isLimitTurningX(): boolean
+```
+
+## setLimitTurningX
+
+Enables/disables angular turning limit around X.
+
+### Signature
+
+```luau
+EntityPhysics:setLimitTurningX(enabled: boolean): ()
+```
+
+## isLimitTurningY
+
+Returns if angular turning around Y is limited.
+
+### Signature
+
+```luau
+EntityPhysics:isLimitTurningY(): boolean
+```
+
+## setLimitTurningY
+
+Enables/disables angular turning limit around Y.
+
+### Signature
+
+```luau
+EntityPhysics:setLimitTurningY(enabled: boolean): ()
+```
+
+## isLimitTurningZ
+
+Returns if angular turning around Z is limited.
+
+### Signature
+
+```luau
+EntityPhysics:isLimitTurningZ(): boolean
+```
+
+## setLimitTurningZ
+
+Enables/disables angular turning limit around Z.
+
+### Signature
+
+```luau
+EntityPhysics:setLimitTurningZ(enabled: boolean): ()
+```
+
+## isScaledMass
+
+Returns whether scaled mass is enabled.
+
+### Signature
+
+```luau
+EntityPhysics:isScaledMass(): boolean
+```
+
+## setScaledMass
+
+Enables/disables scaled mass. Not implemented.
+
+### Signature
+
+```luau
+EntityPhysics:setScaledMass(enabled: boolean): ()
+```
+
+## isContinuousCollision
+
+Returns whether continuous collision detection (CCD) is enabled.
+
+### Signature
+
+```luau
+EntityPhysics:isContinuousCollision(): boolean
+```
+
+## setContinuousCollision
+
+Enables/disables continuous collision detection (CCD).
+
+### Signature
+
+```luau
+EntityPhysics:setContinuousCollision(enabled: boolean): ()
+```
+
+## isPhysicalParticle
+
+Returns whether the body is treated as a physical particle.
+
+### Signature
+
+```luau
+EntityPhysics:isPhysicalParticle(): boolean
+```
+
+## setPhysicalParticle
+
+Enables/disables physical particle mode. Not implemented.
+
+### Signature
+
+```luau
+EntityPhysics:setPhysicalParticle(enabled: boolean): ()
+```
+
+## isUltraQualityCollisions
+
+Returns whether enhanced edge removal (ultra-quality collisions) is enabled.
+
+### Signature
+
+```luau
+EntityPhysics:isUltraQualityCollisions(): boolean
+```
+
+## setUltraQualityCollisions
+
+Enables/disables ultra-quality collisions. Not implemented.
+
+### Signature
+
+```luau
+EntityPhysics:setUltraQualityCollisions(enabled: boolean): ()
+```
+
+## isAlwaysActive
+
+Returns whether the body should always simulate (never sleep).
+
+### Signature
+
+```luau
+EntityPhysics:isAlwaysActive(): boolean
+```
+
+## setAlwaysActive
+
+Enables/disables always-active simulation. Not implemented.
+
+### Signature
+
+```luau
+EntityPhysics:setAlwaysActive(enabled: boolean): ()
+```
+
+## getCollisionGroup
+
+Gets the collision group index of the entity.
+
+### Signature
+
+```luau
+EntityPhysics:getCollisionGroup(): number
+```
+
+## getCollideWith
+
+Gets the list of collision groups this entity collides with.
+
+### Signature
+
+```luau
+EntityPhysics:getCollideWith(): {number}
+```
+
+## changePhysics
+
+Copies the physical resource (collision) from a source entity's visual to this entity and recreates physics if needed.
+
+### Signature
+
+```luau
+EntityPhysics:changePhysics(source: Entity): ()
+```
+
+### Parameters
+- source - entity whose visual's physical resource acts as the donor
+
+### Notes
+- If the entity is glued under a non-logic parent, the recreation is applied to the glued parent like in ModelSwitcher.
+- Preserves stored physics state across recreation.
 
 ## onCollisionStart
 

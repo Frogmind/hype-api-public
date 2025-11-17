@@ -86,6 +86,22 @@ Returns whether dynamic shadow casting is enabled.
 VisualComponent:isCastShadow(): boolean
 ```
 
+## get
+
+Gets the visual component of an entity.
+
+### Signature
+
+```luau
+hype.visual.get(entity: entity): VisualComponent?
+```
+
+### Parameters
+- entity - target entity whose visual component is queried
+
+### Returns
+The VisualComponent handle, or nil if the entity has no visual component
+
 ## attach
 
 Create and return visual component for entity if it doesn't exist.
@@ -162,6 +178,41 @@ Returns all art styles available in the world.
 ```luau
 hype.visual.getAllArtStyles(): {ArtStyle}
 ```
+
+## changeModel
+
+Copies the mesh/model from a source entity to this visual.
+
+### Signature
+
+```luau
+VisualComponent:changeModel(source: entity): ()
+```
+
+### Parameters
+- source - entity whose visual model acts as the donor
+
+### Notes
+- Updates the skinned-model flag and reinitializes/invalidates rigging if needed.
+- Aligns position and rotation when both entities are glued under a non-logic parent.
+- Does not modify physics or scale.
+
+## changeMaterials
+
+Copies materials from a source entity's visual to this visual.
+
+### Signature
+
+```luau
+VisualComponent:changeMaterials(source: entity): ()
+```
+
+### Parameters
+- source - entity whose visual materials act as the donor
+
+### Notes
+- Copies all material slots and the primary texture name.
+- Emits visual property change notifications; does not modify physics.
 
 ## getId
 

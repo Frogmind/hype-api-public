@@ -26,6 +26,23 @@ local id = entity:getId()
 print('Entity id', id)
 ```
 
+## equals
+
+Checks whether two entity handles refer to the same underlying entity.
+
+### Signature
+
+```luau
+Entity:equals(other: Entity): boolean
+```
+
+### Parameters
+- self - the entity (implicit)
+- other - entity to compare against
+
+### Notes
+- Returns false when either entity handle is invalid or destroyed.
+
 ## getPosition
 
 Returns the entity position as a vector.
