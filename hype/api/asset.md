@@ -41,8 +41,9 @@ Gets an asset by its unique ID.
 hype.asset.getById(id: string): Asset?
 ```
 
-### Parameters
-- id - The unique ID of the asset
+### Notes
+- Use only if you know the actual ID (name is not an id)
+- Use findPrefab if you want to get already known prefab by name
 
 ## createPrefab
 

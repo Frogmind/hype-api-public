@@ -47,7 +47,7 @@ hype.world.vibrate(type: string): ()
 
 ## isPlayer
 
-Returns the player index for a player entity, or nil otherwise.
+Returns an integer player index when the entity belongs to a player; otherwise returns nil
 
 ### Signature
 
@@ -58,8 +58,15 @@ hype.world.isPlayer(entity: Entity): integer|nil
 ### Parameters
 - entity - entity to check
 
-### Notes
-- Returns an integer player index when the entity belongs to a player; otherwise returns nil
+## getGroundHeightAt
+
+Returns ground height (y) at given position
+
+### Signature
+
+```luau
+hype.world.getGroundHeightAt(position: Vector): number
+```
 
 ## spawn
 

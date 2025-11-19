@@ -109,13 +109,15 @@ Create and return visual component for entity if it doesn't exist.
 ### Signature
 
 ```luau
-hype.visual.attach(entity: entity, meshName: string, textureName: string): VisualComponent?
+hype.visual.attach(entity: entity, meshName: string): VisualComponent?
 ```
 
 ### Parameters
-- entity to attach the visual component
-- mesh resource name
-- texture resource name
+- entity - entity to attach the visual component
+- meshName - mesh resource name
+
+### Notes
+- You can pass the name of one of the available mesh resources in the world as meshName.
 
 ## getMaterial
 

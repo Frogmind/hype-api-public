@@ -210,6 +210,7 @@ Entity:getParent(): Entity?
 ## getChildren
 
 Returns a list-style table of this entity's direct children.
+- This returns the entities that are direct children of this entity only; not the full descendant hierarchy or the components attached to this entity.
 
 ### Signature
 
@@ -241,14 +242,14 @@ Entity:getVisual(): VisualComponent?
 ### Parameters
 - self - the entity (implicit)
 
-## attachToEntity
+## setParent
 
-Attaches this entity to a parent entity. Supports optional local offset or bone attachment.
+Sets this entity's parent. Supports optional local offset or bone attachment.
 
 ### Signature
 
 ```luau
-Entity:attachToEntity(parent: Entity, offset: vector?, boneName: string?, fitProp: boolean?): void
+Entity:setParent(parent: Entity, offset: vector?, boneName: string?, fitProp: boolean?): void
 ```
 
 ### Parameters
@@ -268,21 +269,21 @@ Entity:attachToEntity(parent: Entity, offset: vector?, boneName: string?, fitPro
 ### Example
 
 ```luau
--- Attach with local offset
-sword:attachToEntity(player, vector.create(0, 0.2, 0))
+-- Parent with local offset
+sword:setParent(player, vector.create(0, 0.2, 0))
 
--- Attach to a hand bone and try to auto-fit
-sword:attachToEntity(player, vector.create(0, 0, 0), "RightHand", true)
+-- Parent to a hand bone and try to auto-fit
+sword:setParent(player, vector.create(0, 0, 0), "RightHand", true)
 ```
 
-## detachFromParent
+## clearParent
 
-Detaches this entity from its parent, restoring separate transforms and physics.
+Clears this entity's parent, restoring separate transforms and physics.
 
 ### Signature
 
 ```luau
-Entity:detachFromParent(): void
+Entity:clearParent(): void
 ```
 
 ### Parameters
@@ -326,8 +327,8 @@ function Rotator:onUpdate(dt: number)
     hype.transform.rotate(self.entity, hype.math.eulerToRotation(0, self.speed * dt, 0), hype.transform.Space.Local)
 end
 
--- Spawn something and attach with an init arg
-local asset = hype.asset.getById("0692d1a6a5555e560e0918")
-local spawned = hype.world.spawn(asset, vector.create(128, 3, 29))
-local comp = spawned:attachComponent("Rotator", math.pi/50)
+local rotatingCubePrefab = hype.world.createPrefab("RotatingCubePrefab")
+hype.visual.attach(rotatingCubePrefab, "cube_mesh") -- Assuming "cube_mesh" is a valid mesh resource
+local comp = rotatingCubePrefab:attachComponent("Rotator", math.pi/50)
+-- We can later spawn the prefab in the world and the cube will rotate
 ```
