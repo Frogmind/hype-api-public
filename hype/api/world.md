@@ -115,3 +115,21 @@ hype.world.destroy(entity: Entity): ()
 ### Notes
 - Does nothing if the entity is already destroyed or invalid
 - Children are cleaned up automatically
+
+## createEntity
+
+Creates an empty entity in the world.
+
+### Signature
+
+```luau
+hype.world.createEntity(position: vector?, rotation: vector?, scale: vector?): Entity
+```
+
+### Parameters
+- position - optional spawn position (default
+- rotation - optional Quaternion rotation (default
+- scale - optional uniform or per‑axis scale (default
+
+### Notes
+- Attach visual and optionally physics components to make it visible and/or physical
