@@ -31,19 +31,25 @@ hype.asset.findPrefab(name: string): Entity?
 ### Returns
 The found prefab's root entity, or nil if no prefab with the given name exists
 
-## getById
+### Notes
+- -Use only if you know that the prefab already exists in the scene
 
-Gets an asset by its unique ID.
+## downloadPrefabById
+
+Downloads a prefab by its unique ID.
 
 ### Signature
 
 ```luau
-hype.asset.getById(id: string): Asset?
+hype.asset.downloadPrefabById(id: string): Asset?
 ```
+
+### Returns
+The downloaded prefab's root entity, or nil if no prefab with the given name exists
 
 ### Notes
 - Use only if you know the actual ID (name is not an id)
-- Use findPrefab if you want to get already known prefab by name
+- Use findPrefab if you want to get already known prefab in the scene by name
 
 ## createPrefab
 

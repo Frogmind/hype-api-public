@@ -57,14 +57,14 @@ Entity:getPosition(global: boolean?): vector
 - self - the entity (implicit)
 - global - if true returns global/world position; otherwise local (default
 
-## getRotation
+## getRotationEuler
 
 Returns the entity rotation as Euler angles in radians.
 
 ### Signature
 
 ```luau
-Entity:getRotation(): vector
+Entity:getRotationEuler(): vector
 ```
 
 ### Parameters
@@ -331,4 +331,26 @@ local rotatingCubePrefab = hype.world.createPrefab("RotatingCubePrefab")
 hype.visual.attach(rotatingCubePrefab, "cube_mesh") -- Assuming "cube_mesh" is a valid mesh resource
 local comp = rotatingCubePrefab:attachComponent("Rotator", math.pi/50)
 -- We can later spawn the prefab in the world and the cube will rotate
+```
+
+## getComponents
+
+Returns components attached to the entity.
+
+### Signature
+
+```luau
+entity:getComponents(componentDef: ComponentDef|string?): {ComponentInstance}
+```
+
+### Parameters
+- self - the entity (implicit)
+- componentDef - optional component id or ComponentDef used to filter the results
+
+### Example
+
+```luau
+for _, rotator in ipairs(entity:getComponents("Rotator")) do
+    rotator.speed = rotator.speed * 0.5
+end
 ```
