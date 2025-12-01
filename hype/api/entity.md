@@ -333,6 +333,35 @@ local comp = rotatingCubePrefab:attachComponent("Rotator", math.pi/50)
 -- We can later spawn the prefab in the world and the cube will rotate
 ```
 
+## detachComponent
+
+Detaches (destroys) a component from the entity.
+
+### Signature
+
+```luau
+entity:detachComponent(component: ComponentInstance|VisualComponent|AnimationComponent|EntityPhysics|UIWidget|ParticleComponent|TextComponent): void
+```
+
+### Parameters
+- self - the entity (implicit)
+- component - a component instance table created by hype.component.define(...), or an engine component handle
+
+### Notes
+- Removes the component from this entity and calls its onDestroy (for Luau components) before destruction.
+- Errors if the component does not belong to this entity or if the handle is invalid.
+- Works with Luau components and built-in components: Visual, Animation, Physics, UI, Particle, Text.
+
+### Example
+
+```luau
+-- Detach a Luau component instance
+local comps = entity:getComponents("Rotator")
+for _, c in ipairs(comps) do
+  entity:detachComponent(c)
+end
+```
+
 ## getComponents
 
 Returns components attached to the entity.

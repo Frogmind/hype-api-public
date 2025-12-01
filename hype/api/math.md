@@ -128,14 +128,14 @@ hype.math.distance(a: vector, b: vector): number
 - a - first point
 - b - second point
 
-## distanceSqrt
+## distanceSqr
 
 Squared distance between two points (no sqrt).
 
 ### Signature
 
 ```luau
-hype.math.distanceSqrt(a: vector, b: vector): number
+hype.math.distanceSqr(a: vector, b: vector): number
 ```
 
 ### Parameters

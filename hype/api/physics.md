@@ -613,7 +613,7 @@ EntityPhysics:onCollisionStart(groupFilter: {number}, component: ComponentInstan
 
 ### Parameters
 - self - the physics handle (implicit)
-- groupFilter - list/array-style table of collision group indices to listen to (0-9)
+- groupFilter - list/array-style table of collision group indices to listen to (1-10)
 - component - component instance (table) receiving the callback
 - callback - called when a qualifying collision starts; other is the other entity or nil
 
@@ -629,7 +629,7 @@ EntityPhysics:onCollisionEnd(groupFilter: {number}, component: ComponentInstance
 
 ### Parameters
 - self - the physics handle (implicit)
-- groupFilter - list/array-style table of collision group indices to listen to (0-9)
+- groupFilter - list/array-style table of collision group indices to listen to (1-10)
 - component - component instance (table) receiving the callback
 - callback - called when a qualifying collision ends; other is the other entity or nil
 

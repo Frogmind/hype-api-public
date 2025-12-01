@@ -97,3 +97,13 @@ hype.component.getEntity(componentInstance: ComponentInstance): Entity
 ```luau
 local entity = hype.component.getEntity(self)
 ```
+
+## getDefId
+
+Returns the component definition id.
+
+### Signature
+
+```luau
+hype.component.getDefId(componentInstance: ComponentInstance): string
+```
