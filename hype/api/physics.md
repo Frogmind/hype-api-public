@@ -163,6 +163,29 @@ Sets the entity's angular velocity (radians per second).
 hype.physics.setAngularVelocity(entity: Entity, angularVelocity: vector, extraParams: { isLocal: boolean? }?): ()
 ```
 
+## getGravity
+
+Gets the current world gravity vector.
+
+### Signature
+
+```luau
+hype.physics.getGravity(): vector
+```
+
+## setGravity
+
+Sets the world gravity vector.
+
+### Signature
+
+```luau
+hype.physics.setGravity(gravity: vector|number): ()
+```
+
+### Notes
+- If a number is provided, it is interpreted as the Y component with X/Z set to 0.
+
 ## attach
 
 Attaches a physics component to the entity if missing and returns a handle.
@@ -697,6 +720,26 @@ Gets the current linear velocity of the physics body.
 
 ```luau
 EntityPhysics:getVelocity(): vector
+```
+
+## getAngularVelocity
+
+Gets the current angular velocity of the physics body.
+
+### Signature
+
+```luau
+EntityPhysics:getAngularVelocity(): vector
+```
+
+## getMass
+
+Gets the mass of the physics body in kg-like units.
+
+### Signature
+
+```luau
+EntityPhysics:getMass(): number
 ```
 
 ## setVelocity

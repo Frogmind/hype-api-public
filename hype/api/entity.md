@@ -43,6 +43,46 @@ Entity:equals(other: Entity): boolean
 ### Notes
 - Returns false when either entity handle is invalid or destroyed.
 
+## getName
+
+Returns the name of the entity.
+
+### Signature
+
+```luau
+Entity:getName(): string
+```
+
+## addTag
+
+Adds the given tag to the entity.
+
+### Signature
+
+```luau
+Entity:addTag(tag: string): ()
+```
+
+## removeTag
+
+Removes the given tag from the entity.
+
+### Signature
+
+```luau
+Entity:removeTag(tag: string): ()
+```
+
+## getTags
+
+Returns all tags assigned to the entity.
+
+### Signature
+
+```luau
+Entity:getTags(): {string}
+```
+
 ## getPosition
 
 Returns the entity position as a vector.

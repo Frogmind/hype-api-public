@@ -58,6 +58,26 @@ hype.world.isPlayer(entity: Entity): integer|nil
 ### Parameters
 - entity - entity to check
 
+## getTags
+
+Returns all tags defined in the world
+
+### Signature
+
+```luau
+hype.world.getTags(): {string}
+```
+
+## getEntitiesWithTag
+
+Returns all entities with the given tag
+
+### Signature
+
+```luau
+hype.world.getEntitiesWithTag(tag: string): {Entity}
+```
+
 ## getGroundHeightAt
 
 Returns ground height (y) at given position

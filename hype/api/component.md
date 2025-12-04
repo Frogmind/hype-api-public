@@ -107,3 +107,23 @@ Returns the component definition id.
 ```luau
 hype.component.getDefId(componentInstance: ComponentInstance): string
 ```
+
+## register
+
+Registers a component definition with its inputs and dreaming properties.
+
+### Signature
+
+```luau
+hype.component.register(componentDef: ComponentDef, inputs: table, props?: table, outputs?: table): void
+```
+
+### Parameters
+- componentDef - table returned by hype.component.define
+- inputs - array of input definitions (name, type, default?, handler?)
+- props - array of property definitions (name, type, getter, setter, uiOptions?)
+
+### Notes
+- Call once per component id before creating instances.
+- InputDef fields: name (string), type (DataType), default (matching type, optional), handler (function, optional)
+- PropDef fields: name (string), type (DataType: Number/Vector/Component/Quaternion/Text), getter (function), setter (function), uiOptions { min?, max? }
