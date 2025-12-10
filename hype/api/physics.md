@@ -57,6 +57,24 @@ hype.physics.addForce(entity: Entity, force: vector, extraParams: { isLocal: boo
 hype.physics.addForce(e, vector.create(0, 5, 0), { isLocal = true, offset = vector.create(0, 1, 0) })
 ```
 
+## explosiveForce
+
+Applies an explosive impulse to nearby dynamic bodies.
+
+### Signature
+
+```luau
+hype.physics.explosiveForce(position: vector, force: number, radius: number, fullForceRadius: number, maxSpeed: number?, groupFilter: {number}?): ()
+```
+
+### Parameters
+- position - explosion center in world space
+- force - impulse magnitude at the center
+- radius - maximum radius where the impulse is applied
+- fullForceRadius - inner radius with full force before falloff begins
+- maxSpeed - optional linear speed cap applied after the impulse (default
+- groupFilter - optional collision groups to include (default
+
 ## addTorque
 
 Applies a torque impulse (or angular velocity change if ignoreMass = true) to an entity's physics body.

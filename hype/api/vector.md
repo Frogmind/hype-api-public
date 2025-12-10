@@ -3,8 +3,8 @@
 Luau vector library
 
 ## Details
-The `vector` library provides functions for creating and manipulating vectors. Vectors are by default 4-component (x, y, z, w),
-but can be used as 3-component vectors by ignoring the w component.
+The `vector` library provides functions for creating and manipulating vectors. Vectors are by default 4-component (x, y, z, w), but can be used as 3-component vectors by ignoring the w
+component. Vectors are immutable; writes to individual components are not supported and all operations return new vector instances.
 Here is the type definition for the vector library:
 ```luau
 declare vector: {
