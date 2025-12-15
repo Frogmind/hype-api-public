@@ -58,15 +58,12 @@ Sets the material id stored at a voxel.
 ### Signature
 
 ```luau
-hype.voxels.setMaterialAt(index: vector, materialId: number)
+hype.voxels.setMaterialAt(index: vector, materialId: number): ()
 ```
 
 ### Parameters
 - index - voxel coordinates `{ x, y, z }`
 - materialId - material index in the voxel world.
-
-### Returns
-nothing.
 
 ## isGroundAt
 
@@ -88,11 +85,8 @@ Removes the voxel at the given coordinate.
 ### Signature
 
 ```luau
-hype.voxels.removeAt(index: vector)
+hype.voxels.removeAt(index: vector): ()
 ```
-
-### Returns
-nothing.
 
 ## worldToVoxel
 
