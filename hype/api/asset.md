@@ -50,6 +50,7 @@ The downloaded prefab's root entity, or nil if no prefab with the given name exi
 ### Notes
 - Use only if you know the actual ID (name is not an id)
 - Use findPrefab if you want to get already known prefab in the scene by name
+- Mandatory to call this after using the find_asset tool
 
 ## createPrefab
 

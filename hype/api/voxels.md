@@ -20,7 +20,7 @@ hype.voxels.isActive(): boolean
 ```
 
 ### Returns
-whether the world contains a voxel map.
+`true`  if the world contains a voxel map. `false` otherwise.
 
 ## getDimensions
 
@@ -49,7 +49,7 @@ hype.voxels.getMaterialAt(index: vector): number?
 - index - voxel coordinates `{ x, y, z }`
 
 ### Returns
-Material id where 0 means empty voxel and values >= 1 map to world material indices (`materialId - 1`), or nil when out of bounds/not active.
+Material id or nil when the voxel is empty/out of bounds/not active.
 
 ## setMaterialAt
 
@@ -58,15 +58,41 @@ Sets the material id stored at a voxel.
 ### Signature
 
 ```luau
-hype.voxels.setMaterialAt(index: vector, materialId: number?): number?
+hype.voxels.setMaterialAt(index: vector, materialId: number)
 ```
 
 ### Parameters
 - index - voxel coordinates `{ x, y, z }`
-- materialId - specify 0 (or nil/negative) to clear the voxel; positive values map to world material index `materialId - 1`.
+- materialId - material index in the voxel world.
 
 ### Returns
-The previous material id using the same convention, or nil if the voxel was empty/out of bounds/not active.
+nothing.
+
+## isGroundAt
+
+Checks whether a solid voxel exists at the given coordinate.
+
+### Signature
+
+```luau
+hype.voxels.isGroundAt(index: vector): boolean?
+```
+
+### Returns
+`true` when the voxel is present, `false` when empty, or nil if out of bounds/not active.
+
+## removeAt
+
+Removes the voxel at the given coordinate.
+
+### Signature
+
+```luau
+hype.voxels.removeAt(index: vector)
+```
+
+### Returns
+nothing.
 
 ## worldToVoxel
 

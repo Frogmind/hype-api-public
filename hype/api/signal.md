@@ -109,7 +109,7 @@ hype.remoteSignal.subscribe(filter: { id: string }, component: ComponentInstance
 ### Parameters
 - filter - required `id`.
 - component - subscription owner.
-- callback - Server signature
+- callback - Server signature: (self: ComponentInstance, player: Player, args: Tuple) -> (); Client signature: (self: ComponentInstance, args: Tuple) -> ().
 
 ### Notes
 - Player parameter is only provided on server side (originating player of the signal).

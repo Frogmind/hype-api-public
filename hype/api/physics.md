@@ -38,18 +38,18 @@ hype.physics.addForce(entity: Entity, force: vector, extraParams: { isLocal: boo
 
 ### Parameters
 - entity - target entity
-- force - impulse (NÂ·s) or velocity change if ignoreMass=true; ignored if near zero
+- force - impulse (N·s) or velocity change if ignoreMass=true; ignored if near zero
 - extraParams - optional parameters
-  - extraParams.isLocal - interpret force (and offset) in local space (default
-  - extraParams.ignoreMass - apply raw velocity change instead of impulse (default
-  - extraParams.offset - point of application relative to entity origin (local if isLocal=true); adds torque (default
+  - extraParams.isLocal - interpret force (and offset) in local space (default: false)
+  - extraParams.ignoreMass - apply raw velocity change instead of impulse (default: false)
+  - extraParams.offset - point of application relative to entity origin (local if isLocal=true); adds torque (default: nil)
   - extraParams.maxSpeed - if > 0, caps the force so that the resulting speed will not go over maxSpeed along the force direction. Doesn't slow down the object if it's going
 - faster than maxSpeed (default
 
 ### Notes
 - Zero-length forces are ignored
 - If offset is provided a torque impulse may also be generated
-- When ignoreMass=true the provided vector is treated as Î”v (mass independent)
+- When ignoreMass=true the provided vector is treated as Δv (mass independent)
 
 ### Example
 
@@ -72,8 +72,8 @@ hype.physics.explosiveForce(position: vector, force: number, radius: number, ful
 - force - impulse magnitude at the center
 - radius - maximum radius where the impulse is applied
 - fullForceRadius - inner radius with full force before falloff begins
-- maxSpeed - optional linear speed cap applied after the impulse (default
-- groupFilter - optional collision groups to include (default
+- maxSpeed - optional linear speed cap applied after the impulse (default: no cap)
+- groupFilter - optional collision groups to include (default: all)
 
 ## addTorque
 
@@ -89,8 +89,8 @@ hype.physics.addTorque(entity: Entity, torque: vector, extraParams: { isLocal: b
 - entity - target entity
 - torque - torque impulse (NÂ·mÂ·s); ignored if near zero
 - extraParams - optional parameters
-  - extraParams.isLocal - interpret torque in local space (default
-  - extraParams.ignoreMass - apply angular velocity change directly (default
+  - extraParams.isLocal - interpret torque in local space (default: false)
+  - extraParams.ignoreMass - apply angular velocity change directly (default: false)
 
 ### Notes
 - torque is ignored if near zero
@@ -118,8 +118,8 @@ hype.physics.overlapSphere(position: vector, radius: number, extraParams: { grou
 - position - center of the sphere (world space)
 - radius - sphere radius (> 0)
 - extraParams - optional parameters
-  - extraParams.groupFilter - collision groups to include (default
-  - extraParams.sortResultsByDistance - sort ascending by squared distance from position (default
+  - extraParams.groupFilter - collision groups to include (default: all)
+  - extraParams.sortResultsByDistance - sort ascending by squared distance from position (default: false)
   - extraParams.ignoredEntities - entities to exclude
 
 ### Notes
@@ -147,8 +147,8 @@ hype.physics.overlapBox(position: vector, halfSize: vector, extraParams: { group
 - position - center of the box (world space)
 - halfSize - half extents of the box (each component > 0)
 - extraParams - optional parameters
-  - extraParams.groupFilter - collision groups to include (default
-  - extraParams.sortResultsByDistance - sort ascending by squared distance from position (default
+  - extraParams.groupFilter - collision groups to include (default: all)
+  - extraParams.sortResultsByDistance - sort ascending by squared distance from position (default: false)
   - extraParams.ignoredEntities - entities to exclude
 
 ### Notes
@@ -687,15 +687,15 @@ Entity:addForce(force: vector, extraParams: { isLocal: boolean?, ignoreMass: boo
 ### Parameters
 - force - impulse (NÂ·s) or velocity change if ignoreMass=true; ignored if near zero
 - extraParams - optional parameters
-  - extraParams.isLocal - interpret force (and offset) in local space (default
-  - extraParams.ignoreMass - apply raw velocity change instead of impulse (default
-  - extraParams.offset - point of application relative to entity origin (local if isLocal=true); adds torque (default
-  - extraParams.maxSpeed - if > 0, caps resulting speed along the force direction; scales the applied force accordingly (default
+  - extraParams.isLocal - interpret force (and offset) in local space (default: false)
+  - extraParams.ignoreMass - apply raw velocity change instead of impulse (default: false)
+  - extraParams.offset - point of application relative to entity origin (local if isLocal=true); adds torque (default: nil)
+  - extraParams.maxSpeed - if > 0, caps resulting speed along the force direction; scales the applied force accordingly (default: disabled)
 
 ### Notes
 - Zero-length forces are ignored
 - If offset is provided a torque impulse may also be generated
-- When ignoreMass=true the provided vector is treated as Î”v (mass independent)
+- When ignoreMass=true the provided vector is treated as Δv (mass independent)
 
 ### Example
 
@@ -716,8 +716,8 @@ Entity:addTorque(torque: vector, extraParams: { isLocal: boolean?, ignoreMass: b
 ### Parameters
 - torque - torque impulse (NÂ·mÂ·s); ignored if near zero
 - extraParams - optional parameters
-  - extraParams.isLocal - interpret torque in local space (default
-  - extraParams.ignoreMass - apply angular velocity change directly (default
+  - extraParams.isLocal - interpret torque in local space (default: false)
+  - extraParams.ignoreMass - apply angular velocity change directly (default: false)
 
 ### Notes
 - torque is ignored if near zero

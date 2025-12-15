@@ -26,23 +26,6 @@ local id = entity:getId()
 print('Entity id', id)
 ```
 
-## equals
-
-Checks whether two entity handles refer to the same underlying entity.
-
-### Signature
-
-```luau
-Entity:equals(other: Entity): boolean
-```
-
-### Parameters
-- self - the entity (implicit)
-- other - entity to compare against
-
-### Notes
-- Returns false when either entity handle is invalid or destroyed.
-
 ## getName
 
 Returns the name of the entity.
@@ -95,7 +78,7 @@ Entity:getPosition(global: boolean?): vector
 
 ### Parameters
 - self - the entity (implicit)
-- global - if true returns global/world position; otherwise local (default
+- global - if true returns global/world position; otherwise local (default: true)
 
 ## getRotationEuler
 
@@ -122,7 +105,7 @@ Entity:getRotation(global: boolean?): rotation
 
 ### Parameters
 - self - the entity (implicit)
-- global - if true returns global/world rotation; otherwise local rotation (default
+- global - if true returns global/world rotation; otherwise local rotation (default: true)
 
 ### Notes
 - Quaternion order is (x, y, z, w)
@@ -147,7 +130,7 @@ Entity:getScale(global: boolean?): vector
 
 ### Parameters
 - self - the entity (implicit)
-- global - if true returns global/world scale; otherwise local scale (default
+- global - if true returns global/world scale; otherwise local scale (default: false)
 
 ### Notes
 - Global scale is derived by multiplying this entity's local scale by all parent scales.
@@ -216,6 +199,9 @@ Entity:getPhysics(): PhysicsComponent?
 ### Parameters
 - self - the entity (implicit)
 
+### Notes
+- Deprecated: use hype.physics.get(entity) instead
+
 ## setVisible
 
 Sets the visibility of the entity; optionally applies to all child entities.
@@ -229,7 +215,7 @@ Entity:setVisible(visible: boolean, includeChildren: boolean?): void
 ### Parameters
 - self - the entity (implicit)
 - visible - true to show, false to hide
-- includeChildren - if true, also applies to all children recursively (default
+- includeChildren - if true, also applies to all children recursively (default: false)
 
 ### Notes
 - Physics is unaffected.

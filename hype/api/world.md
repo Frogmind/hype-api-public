@@ -40,7 +40,7 @@ hype.world.vibrate(type: string): ()
 ```
 
 ### Parameters
-- type - one of
+- type - one of: "Basic", "Impact", "Selection", "Success", "Warning", "Error", "Heavy", "Medium", "Light", "Rigid", "Soft"
 
 ### Notes
 - Unrecognized names fall back to "Basic"
@@ -102,7 +102,7 @@ hype.world.spawn(source: Entity, position: vector, rotation: vector?, scale: vec
 - source - entity to spawn
 - position - spawn position (world or relative when parent provided)
 - rotation - Quaternion rotation
-- scale - uniform or per‑axis scale (default
+- scale - uniform or per‑axis scale (default: (1,1,1))
 
 ### Notes
 - Returns nil if spawning fails
@@ -147,9 +147,9 @@ hype.world.createEntity(position: vector?, rotation: vector?, scale: vector?): E
 ```
 
 ### Parameters
-- position - optional spawn position (default
-- rotation - optional Quaternion rotation (default
-- scale - optional uniform or per‑axis scale (default
+- position - optional spawn position (default: (0,0,0))
+- rotation - optional Quaternion rotation (default: identity)
+- scale - optional uniform or per‑axis scale (default: (1,1,1))
 
 ### Notes
 - Attach visual and optionally physics components to make it visible and/or physical

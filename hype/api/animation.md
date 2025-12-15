@@ -42,3 +42,16 @@ AnimationComponent:setAnimation(name: string): void
 
 ### Parameters
 - name - animation clip name (fuzzy match)
+
+## setSpeed
+
+Sets the playback speed multiplier.
+
+### Signature
+
+```luau
+AnimationComponent:setSpeed(speed: number): void
+```
+
+### Parameters
+- speed - playback speed multiplier (capped internally)
