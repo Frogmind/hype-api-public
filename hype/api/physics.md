@@ -685,7 +685,7 @@ Entity:addForce(force: vector, extraParams: { isLocal: boolean?, ignoreMass: boo
 ```
 
 ### Parameters
-- force - impulse (NÂ·s) or velocity change if ignoreMass=true; ignored if near zero
+- force - impulse (N·s) or velocity change if ignoreMass=true; ignored if near zero
 - extraParams - optional parameters
   - extraParams.isLocal - interpret force (and offset) in local space (default: false)
   - extraParams.ignoreMass - apply raw velocity change instead of impulse (default: false)

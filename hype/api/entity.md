@@ -186,22 +186,6 @@ Entity:getCenterOfBoundingBox(): vector
 ### Parameters
 - self - the entity (implicit)
 
-## getPhysics
-
-Returns the physics component for this entity or nil if it has no physics component.
-
-### Signature
-
-```luau
-Entity:getPhysics(): PhysicsComponent?
-```
-
-### Parameters
-- self - the entity (implicit)
-
-### Notes
-- Deprecated: use hype.physics.get(entity) instead
-
 ## setVisible
 
 Sets the visibility of the entity; optionally applies to all child entities.
@@ -254,19 +238,6 @@ for i, child in ipairs(entity:getChildren()) do
     -- Do something with child
 end
 ```
-
-## getVisual
-
-Returns this entity's visual component or nil if none exists.
-
-### Signature
-
-```luau
-Entity:getVisual(): VisualComponent?
-```
-
-### Parameters
-- self - the entity (implicit)
 
 ## setParent
 

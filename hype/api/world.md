@@ -2,33 +2,6 @@
 
 ## API Reference
 
-## playAudio
-
-Plays an audio asset (music or one‑shot SFX).
-
-### Signature
-
-```luau
-hype.world.playAudio(audio: AudioAsset|integer): ()
-```
-
-### Parameters
-- audio - handle returned by hype.asset.findAudio
-
-### Notes
-- For streaming (music) assets: plays once (non-looping) currently
-- For SFX assets: creates a transient one‑shot
-- Silently does nothing if the asset id is invalid
-
-### Example
-
-```luau
-local explosionAudio = hype.asset.findAudio("Explosion")
-if explosionAudio then
-  hype.world.playAudio(explosionAudio)
-end
-```
-
 ## vibrate
 
 Triggers a device vibration (haptic).
