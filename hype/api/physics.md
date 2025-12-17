@@ -43,8 +43,7 @@ hype.physics.addForce(entity: Entity, force: vector, extraParams: { isLocal: boo
   - extraParams.isLocal - interpret force (and offset) in local space (default: false)
   - extraParams.ignoreMass - apply raw velocity change instead of impulse (default: false)
   - extraParams.offset - point of application relative to entity origin (local if isLocal=true); adds torque (default: nil)
-  - extraParams.maxSpeed - if > 0, caps the force so that the resulting speed will not go over maxSpeed along the force direction. Doesn't slow down the object if it's going
-- faster than maxSpeed (default
+  - extraParams.maxSpeed - if > 0, caps the force so that the resulting speed will not go over maxSpeed along the force direction. Doesn't slow down the object if it's going faster than maxSpeed (default: disabled)
 
 ### Notes
 - Zero-length forces are ignored

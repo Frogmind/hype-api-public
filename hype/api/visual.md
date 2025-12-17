@@ -181,6 +181,20 @@ Returns all art styles available in the world.
 hype.visual.getAllArtStyles(): {ArtStyle}
 ```
 
+## colorMix
+
+Mixes two colors using the given operation and factor.
+
+### Signature
+
+```luau
+hype.visual.colorMix(operator: string, factor: number, colorA: vector, colorB: vector, clamp: boolean): vector
+```
+
+### Notes
+- Available operations: "mix", "value", "color", "saturation", "hue", "divide", "subtract", "difference", "overlay", "add", "color_dodge", "screen",
+- "lighten", "color_burn", "multiply", "darken"
+
 ## changeModel
 
 Copies the mesh/model from a source entity to this visual.

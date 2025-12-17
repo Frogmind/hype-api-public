@@ -31,6 +31,32 @@ hype.text.create(position: vector, text: string): TextComponent?
 - position - world position for the new text object
 - text - initial text content
 
+## textInput
+
+Opens a text input dialog.
+
+### Signature
+
+```luau
+hype.text.textInput(type: string, maxLength: number, onSubmit: function(value: string|number), onDismiss: function()? ): ()
+```
+
+### Parameters
+- type - one of "text", "number", "integer"
+- maxLength - maximum allowed characters (clamped to [1, 100])
+- onSubmit - callback invoked on confirm with the entered value
+- onDismiss - optional callback invoked if the input is dismissed without submitting
+
+## closeTextInput
+
+Closes the currently open text input, if any.
+
+### Signature
+
+```luau
+hype.text.closeTextInput(): ()
+```
+
 ## getText
 
 Returns current text content.

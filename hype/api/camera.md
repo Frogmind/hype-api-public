@@ -81,3 +81,33 @@ hype.camera.getEntity(): Entity?
 
 ### Returns
 The camera entity, or nil if not available.
+
+## setYaw
+
+Sets the camera yaw offset in radians.
+
+### Signature
+
+```luau
+hype.camera.setYaw(yawRad: number): ()
+```
+
+## setPitch
+
+Sets the camera pitch offset in radians.
+
+### Signature
+
+```luau
+hype.camera.setPitch(pitchRad: number): ()
+```
+
+## setOffset
+
+Sets the camera position offset relative to its target.
+
+### Signature
+
+```luau
+hype.camera.setOffset(offset: vector): ()
+```

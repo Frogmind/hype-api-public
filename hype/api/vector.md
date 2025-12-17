@@ -27,3 +27,5 @@ declare vector: {
 	one: vector,
 }
 ```
+Note that the ? after the type indicates that the parameter is optional. For the vector library, do not pass nil for optional parameters; either provide a value or omit the parameter
+entirely.
