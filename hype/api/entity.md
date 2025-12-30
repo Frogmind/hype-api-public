@@ -12,9 +12,6 @@ Returns the numeric id of the entity or raises an error if the entity is invalid
 Entity:getId(): number
 ```
 
-### Parameters
-- self - the entity (implicit)
-
 ### Notes
 - Returned id is an internal identifier; 0 is never returned (0 would mean invalid)
 - An error is raised if the entity userdata is invalid / destroyed
@@ -90,9 +87,6 @@ Returns the entity rotation as Euler angles in radians.
 Entity:getRotationEuler(): vector
 ```
 
-### Parameters
-- self - the entity (implicit)
-
 ## getRotation
 
 Returns the entity rotation as a quaternion (vector x,y,z,w).
@@ -146,9 +140,6 @@ Returns the forward direction vector of the entity (unit length).
 Entity:getDirection(): vector
 ```
 
-### Parameters
-- self - the entity (implicit)
-
 ### Notes
 - Forward direction corresponds to the entity's -Z in world space
 
@@ -167,9 +158,6 @@ hype.world.spawn(myPrefab, vector.create(0, y, 0))
 Entity:getDimensions(): vector
 ```
 
-### Parameters
-- self - the entity (implicit)
-
 ### Notes
 - When you want to spawn entities on the ground or relative to other entities, use this and the `getCenterOfBoundingBox` method to position entities correctly
 
@@ -182,9 +170,6 @@ Returns the coordinates of the center of the entity's bounding box in the entity
 ```luau
 Entity:getCenterOfBoundingBox(): vector
 ```
-
-### Parameters
-- self - the entity (implicit)
 
 ## setVisible
 
@@ -214,9 +199,6 @@ Returns the parent entity or nil if this is a root or invalid entity.
 Entity:getParent(): Entity?
 ```
 
-### Parameters
-- self - the entity (implicit)
-
 ## getChildren
 
 Returns a list-style table of this entity's direct children.
@@ -227,9 +209,6 @@ Returns a list-style table of this entity's direct children.
 ```luau
 Entity:getChildren(): {Entity}
 ```
-
-### Parameters
-- self - the entity (implicit)
 
 ### Example
 
@@ -281,9 +260,6 @@ Clears this entity's parent, restoring separate transforms and physics.
 ```luau
 Entity:clearParent(): void
 ```
-
-### Parameters
-- self - the entity to detach (implicit)
 
 ### Notes
 - If the entity has no parent, this is a no-op.
