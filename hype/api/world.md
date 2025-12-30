@@ -5,6 +5,9 @@ Functions for interacting with the 3D world, such as spawning and destroying ent
 ## Details
 Tags are case-insensitive strings assigned to entities for categorization and retrieval. It is good practice to add tags to entities for easier management.
 Entities can have multiple tags, and tags can be added or removed at runtime.
+You can also add tags to prefab entities, which will be inherited by spawned instances upon spawning. This allows for consistent tagging of entities created from prefabs.
+You do not need to manually add tags to spawned entities if the prefab already has them.
+Note that the `hype.world.getEntitiesWithTag` function does not retrieve prefab entities themselves, only instances present in the world.
 
 ## API Reference
 
