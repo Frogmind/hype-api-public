@@ -57,11 +57,12 @@ Defines a Luau component by id.
 ### Signature
 
 ```luau
-hype.component.define(id: string): LuauComponentDef
+hype.component.define(id: string, remote: bool?): LuauComponentDef
 ```
 
 ### Parameters
 - id - unique component identifier
+- remote - whether the component runs on the server (default: false)
 
 ### Notes
 - The returned table is the component "class"; instances inherit from it

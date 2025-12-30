@@ -1,4 +1,12 @@
 # UI
+### Notes
+- Available image names for Image:setIcon(imageName), Layout:setImage(imageName) and Button:setImage(imageName):
+- Hexagon Sharp, Award, SfxThumb03, Gear, People, Pickaxe, Compass, Gem2, Coins, Gender Other, Undo, Minus, Radial Gradient 1, Arrow Down, Linear Gradient 2, Arrow Line Up, Drop, Fire,
+- Interact, None, Square Rounded, Curved Arrow Right, Male, Tutorial, Person, Aim, Crown, Night, Touch, Swipe, White, Bow, Bell, Dice, Lines, Rock, Circle Outline, Badge, Axe, Ladder,
+- Sound, Paw, Home, Speech, Pause, Help, Dashed Gradient, Gem, Tap, Arrow Curved Right, Armor, Chest, Hexagon Rounded, Thumb Up, Rocket, Ticket, SfxThumb00, Noise 1, Arrow Left, Power,
+- Ammo, Toolbar Instances, Cancel, Puzzle, Skull, Experience, Radial Gradient 2, Linear Gradient 1, Spiral, Key, Drive, Arrow Right, Female, Create, Phone, Banner, Thumb Down, Add,
+- Dollar, Arrow Curved Left, Mag, Dots, Eye Closed, Cross Attack, Wing, Hammer, Sword, Pen, Arrow Line Right, Play, Shield, Noise 3, Exclamation, Lock, Cube, Fist, Restart, Sun,
+- Defend, Moon, Fuel, Clover, Time, Hypex, Medal, Arrow Up, Sleep, Radial Gradient 3, Book, Cloud
 
 ## API Reference
 
@@ -518,6 +526,46 @@ Button:setSize(size: vector): ()
 ### Notes
 - Uses X/Y components; values are clamped to >= 0
 
+## setWidth
+
+Sets the button width.
+
+### Signature
+
+```luau
+Button:setWidth(width: number): ()
+```
+
+## setHeight
+
+Sets the button height.
+
+### Signature
+
+```luau
+Button:setHeight(height: number): ()
+```
+
+## setRelativeWidth
+
+Sets relative button width (0..1).
+
+### Signature
+
+```luau
+Button:setRelativeWidth(width: number): ()
+```
+
+## setRelativeHeight
+
+Sets relative button height (0..1).
+
+### Signature
+
+```luau
+Button:setRelativeHeight(height: number): ()
+```
+
 ## setOpacity
 
 Sets the button opacity.
@@ -601,6 +649,29 @@ Sets 3D move ignore collision group filter.
 Button:setMove3DIgnoreFilter(groupMask: number): ()
 ```
 
+## addChild
+
+Adds a widget as a child of this button.
+
+### Signature
+
+```luau
+Button:addChild(child: UIWidget): ()
+```
+
+### Notes
+- If child already has a parent, it is reparented
+
+## setName
+
+Sets the widget name.
+
+### Signature
+
+```luau
+Button:setName(name: string): ()
+```
+
 ## setPressedColor
 
 Sets pressed-state color.
@@ -614,6 +685,29 @@ Button:setPressedColor(color: vector4): ()
 ### Notes
 - Not implemented yet
 
+## setTextSize
+
+Sets the font size multiplier.
+
+### Signature
+
+```luau
+Button:setTextSize(scale: number): ()
+```
+
+### Notes
+- Clamped to [0.1, 3.0]
+
+## setOutline
+
+Enables or disables an outline effect on the button text.
+
+### Signature
+
+```luau
+Button:setOutline(enabled: boolean): ()
+```
+
 ## setShape
 
 Sets visual shape/background by name.
@@ -622,6 +716,16 @@ Sets visual shape/background by name.
 
 ```luau
 Button:setShape(name: string): ()
+```
+
+## setRoundness
+
+Sets corner roundness.
+
+### Signature
+
+```luau
+Button:setRoundness(roundness: number): ()
 ```
 
 ## setBorderWidth
@@ -719,49 +823,52 @@ Button:setPassTouchThrough(enabled: boolean): ()
 ## onStart
 
 Subscribes to button press start.
+number, yLocal: number
 })): Subscription
 
 ### Signature
 
 ```luau
-Button:onStart(component: ComponentInstance, callback: function(component: ComponentInstance, event: { source: Button, touchId: number, x: number, y: number
+Button:onStart(component: ComponentInstance, callback: function(component: ComponentInstance, event: { source: Button, touchId: number, x: number, y: number, xLocal:
 ```
 
 ## onEnd
 
 Subscribes to button press end.
+number, yLocal: number
 })): Subscription
 
 ### Signature
 
 ```luau
-Button:onEnd(component: ComponentInstance, callback: function(component: ComponentInstance, event: { source: Button, touchId: number, x: number, y: number
+Button:onEnd(component: ComponentInstance, callback: function(component: ComponentInstance, event: { source: Button, touchId: number, x: number, y: number, xLocal:
 ```
 
 ## onMove
 
 Subscribes to button move (2D touch).
+number, yLocal: number
 })): Subscription
 
 ### Signature
 
 ```luau
-Button:onMove(component: ComponentInstance, callback: function(component: ComponentInstance, event: { source: Button, touchId: number, x: number, y: number
+Button:onMove(component: ComponentInstance, callback: function(component: ComponentInstance, event: { source: Button, touchId: number, x: number, y: number, xLocal:
 ```
 
 ## onMove3D
 
 Subscribes to button move with 3D raycast info.
-hit: table? })): Subscription
+boolean, entity?: Entity })): Subscription
 
 ### Signature
 
 ```luau
-Button:onMove3D(component: ComponentInstance, callback: function(component: ComponentInstance, event: { source: Button, touchId: number, x: number, y: number,
+Button:onMove3D(component: ComponentInstance, callback: function(component: ComponentInstance, event: { source: Button, touchId: number, position: vector, hit:
 ```
 
 ### Notes
-- Performs a 3D raycast from the touch position; event.hit is provided on intersections
+- Performs a 3D raycast from the touch position; event.position is the hit location if hit is true
 
 ## remove
 
@@ -785,6 +892,7 @@ Button:setAlignment(alignment: string): ()
 
 ### Notes
 - Expected: Left/Center/Right/Top/Bottom (depends on layout type)
+- Requires the widget to already have a parent
 
 ## setHorizontalAlignment
 
@@ -796,6 +904,9 @@ Sets horizontal alignment in parent layout.
 Button:setHorizontalAlignment(alignment: string): ()
 ```
 
+### Notes
+- Requires the widget to already have a parent
+
 ## setVerticalAlignment
 
 Sets vertical alignment in parent layout.
@@ -805,6 +916,9 @@ Sets vertical alignment in parent layout.
 ```luau
 Button:setVerticalAlignment(alignment: string): ()
 ```
+
+### Notes
+- Requires the widget to already have a parent
 
 ## setLeftMargin
 
@@ -1038,6 +1152,46 @@ Text:setSize(size: vector): ()
 ### Notes
 - Uses X/Y components; values are clamped to >= 0
 
+## setWidth
+
+Sets the width.
+
+### Signature
+
+```luau
+Text:setWidth(width: number): ()
+```
+
+## setHeight
+
+Sets the height.
+
+### Signature
+
+```luau
+Text:setHeight(height: number): ()
+```
+
+## setRelativeWidth
+
+Sets relative width (0..1).
+
+### Signature
+
+```luau
+Text:setRelativeWidth(width: number): ()
+```
+
+## setRelativeHeight
+
+Sets relative height (0..1).
+
+### Signature
+
+```luau
+Text:setRelativeHeight(height: number): ()
+```
+
 ## setOpacity
 
 Sets the opacity.
@@ -1183,6 +1337,9 @@ Sets alignment inside parent layout.
 Text:setAlignment(alignment: string): ()
 ```
 
+### Notes
+- Requires the widget to already have a parent
+
 ## setHorizontalAlignment
 
 Sets horizontal alignment in parent layout.
@@ -1193,6 +1350,9 @@ Sets horizontal alignment in parent layout.
 Text:setHorizontalAlignment(alignment: string): ()
 ```
 
+### Notes
+- Requires the widget to already have a parent
+
 ## setVerticalAlignment
 
 Sets vertical alignment in parent layout.
@@ -1202,6 +1362,9 @@ Sets vertical alignment in parent layout.
 ```luau
 Text:setVerticalAlignment(alignment: string): ()
 ```
+
+### Notes
+- Requires the widget to already have a parent
 
 ## setLeftMargin
 
@@ -1379,6 +1542,46 @@ Layout:setSize(size: vector): ()
 ### Notes
 - Uses X/Y components; values are clamped to >= 0
 
+## setWidth
+
+Sets the width.
+
+### Signature
+
+```luau
+Layout:setWidth(width: number): ()
+```
+
+## setHeight
+
+Sets the height.
+
+### Signature
+
+```luau
+Layout:setHeight(height: number): ()
+```
+
+## setRelativeWidth
+
+Sets relative width (0..1).
+
+### Signature
+
+```luau
+Layout:setRelativeWidth(width: number): ()
+```
+
+## setRelativeHeight
+
+Sets relative height (0..1).
+
+### Signature
+
+```luau
+Layout:setRelativeHeight(height: number): ()
+```
+
 ## setOpacity
 
 Sets the opacity.
@@ -1423,6 +1626,16 @@ Sets the widget name.
 
 ```luau
 Layout:setName(name: string): ()
+```
+
+## setZIndex
+
+Sets the z-index (render order within parent).
+
+### Signature
+
+```luau
+Layout:setZIndex(zIndex: number): ()
 ```
 
 ## setUseContentWidth
@@ -1541,9 +1754,6 @@ Sets background image (Border layout only).
 Layout:setImage(name: string): ()
 ```
 
-### Notes
-- Name must match an atlas widget image definition
-
 ## setBlockTouches
 
 Blocks touches on this panel (Border layout only).
@@ -1607,6 +1817,9 @@ Sets alignment inside parent layout.
 Layout:setAlignment(alignment: string): ()
 ```
 
+### Notes
+- Requires the widget to already have a parent
+
 ## setHorizontalAlignment
 
 Sets horizontal alignment in parent layout.
@@ -1617,6 +1830,9 @@ Sets horizontal alignment in parent layout.
 Layout:setHorizontalAlignment(alignment: string): ()
 ```
 
+### Notes
+- Requires the widget to already have a parent
+
 ## setVerticalAlignment
 
 Sets vertical alignment in parent layout.
@@ -1626,6 +1842,9 @@ Sets vertical alignment in parent layout.
 ```luau
 Layout:setVerticalAlignment(alignment: string): ()
 ```
+
+### Notes
+- Requires the widget to already have a parent
 
 ## setLeftMargin
 
@@ -1930,6 +2149,46 @@ Sets the size.
 ProgressBar:setSize(size: vector): ()
 ```
 
+## setWidth
+
+Sets the width.
+
+### Signature
+
+```luau
+ProgressBar:setWidth(width: number): ()
+```
+
+## setHeight
+
+Sets the height.
+
+### Signature
+
+```luau
+ProgressBar:setHeight(height: number): ()
+```
+
+## setRelativeWidth
+
+Sets relative width (0..1).
+
+### Signature
+
+```luau
+ProgressBar:setRelativeWidth(width: number): ()
+```
+
+## setRelativeHeight
+
+Sets relative height (0..1).
+
+### Signature
+
+```luau
+ProgressBar:setRelativeHeight(height: number): ()
+```
+
 ## setOpacity
 
 Sets the opacity.
@@ -2079,6 +2338,9 @@ Sets alignment inside parent layout.
 ProgressBar:setAlignment(alignment: string): ()
 ```
 
+### Notes
+- Requires the widget to already have a parent
+
 ## setHorizontalAlignment
 
 Sets horizontal alignment in parent layout.
@@ -2089,6 +2351,9 @@ Sets horizontal alignment in parent layout.
 ProgressBar:setHorizontalAlignment(alignment: string): ()
 ```
 
+### Notes
+- Requires the widget to already have a parent
+
 ## setVerticalAlignment
 
 Sets vertical alignment in parent layout.
@@ -2098,6 +2363,9 @@ Sets vertical alignment in parent layout.
 ```luau
 ProgressBar:setVerticalAlignment(alignment: string): ()
 ```
+
+### Notes
+- Requires the widget to already have a parent
 
 ## setLeftMargin
 
@@ -2359,6 +2627,46 @@ Sets the size.
 ProgressCircle:setSize(size: vector): ()
 ```
 
+## setWidth
+
+Sets the width.
+
+### Signature
+
+```luau
+ProgressCircle:setWidth(width: number): ()
+```
+
+## setHeight
+
+Sets the height.
+
+### Signature
+
+```luau
+ProgressCircle:setHeight(height: number): ()
+```
+
+## setRelativeWidth
+
+Sets relative width (0..1).
+
+### Signature
+
+```luau
+ProgressCircle:setRelativeWidth(width: number): ()
+```
+
+## setRelativeHeight
+
+Sets relative height (0..1).
+
+### Signature
+
+```luau
+ProgressCircle:setRelativeHeight(height: number): ()
+```
+
 ## setOpacity
 
 Sets the opacity.
@@ -2485,6 +2793,9 @@ Sets alignment inside parent layout.
 ProgressCircle:setAlignment(alignment: string): ()
 ```
 
+### Notes
+- Requires the widget to already have a parent
+
 ## setHorizontalAlignment
 
 Sets horizontal alignment in parent layout.
@@ -2495,6 +2806,9 @@ Sets horizontal alignment in parent layout.
 ProgressCircle:setHorizontalAlignment(alignment: string): ()
 ```
 
+### Notes
+- Requires the widget to already have a parent
+
 ## setVerticalAlignment
 
 Sets vertical alignment in parent layout.
@@ -2504,6 +2818,9 @@ Sets vertical alignment in parent layout.
 ```luau
 ProgressCircle:setVerticalAlignment(alignment: string): ()
 ```
+
+### Notes
+- Requires the widget to already have a parent
 
 ## setLeftMargin
 
@@ -2705,6 +3022,46 @@ Sets the size.
 TextArea:setSize(size: vector): ()
 ```
 
+## setWidth
+
+Sets the width.
+
+### Signature
+
+```luau
+TextArea:setWidth(width: number): ()
+```
+
+## setHeight
+
+Sets the height.
+
+### Signature
+
+```luau
+TextArea:setHeight(height: number): ()
+```
+
+## setRelativeWidth
+
+Sets relative width (0..1).
+
+### Signature
+
+```luau
+TextArea:setRelativeWidth(width: number): ()
+```
+
+## setRelativeHeight
+
+Sets relative height (0..1).
+
+### Signature
+
+```luau
+TextArea:setRelativeHeight(height: number): ()
+```
+
 ## setOpacity
 
 Sets the opacity.
@@ -2794,6 +3151,9 @@ Sets alignment inside parent layout.
 TextArea:setAlignment(alignment: string): ()
 ```
 
+### Notes
+- Requires the widget to already have a parent
+
 ## setHorizontalAlignment
 
 Sets horizontal alignment in parent layout.
@@ -2804,6 +3164,9 @@ Sets horizontal alignment in parent layout.
 TextArea:setHorizontalAlignment(alignment: string): ()
 ```
 
+### Notes
+- Requires the widget to already have a parent
+
 ## setVerticalAlignment
 
 Sets vertical alignment in parent layout.
@@ -2813,6 +3176,9 @@ Sets vertical alignment in parent layout.
 ```luau
 TextArea:setVerticalAlignment(alignment: string): ()
 ```
+
+### Notes
+- Requires the widget to already have a parent
 
 ## setLeftMargin
 
@@ -3024,6 +3390,46 @@ Sets the size.
 Image:setSize(size: vector): ()
 ```
 
+## setWidth
+
+Sets the width.
+
+### Signature
+
+```luau
+Image:setWidth(width: number): ()
+```
+
+## setHeight
+
+Sets the height.
+
+### Signature
+
+```luau
+Image:setHeight(height: number): ()
+```
+
+## setRelativeWidth
+
+Sets relative width (0..1).
+
+### Signature
+
+```luau
+Image:setRelativeWidth(width: number): ()
+```
+
+## setRelativeHeight
+
+Sets relative height (0..1).
+
+### Signature
+
+```luau
+Image:setRelativeHeight(height: number): ()
+```
+
 ## setOpacity
 
 Sets the opacity.
@@ -3090,6 +3496,9 @@ Sets alignment inside parent layout.
 Image:setAlignment(alignment: string): ()
 ```
 
+### Notes
+- Requires the widget to already have a parent
+
 ## setHorizontalAlignment
 
 Sets horizontal alignment in parent layout.
@@ -3100,6 +3509,9 @@ Sets horizontal alignment in parent layout.
 Image:setHorizontalAlignment(alignment: string): ()
 ```
 
+### Notes
+- Requires the widget to already have a parent
+
 ## setVerticalAlignment
 
 Sets vertical alignment in parent layout.
@@ -3109,6 +3521,9 @@ Sets vertical alignment in parent layout.
 ```luau
 Image:setVerticalAlignment(alignment: string): ()
 ```
+
+### Notes
+- Requires the widget to already have a parent
 
 ## setLeftMargin
 

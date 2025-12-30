@@ -268,7 +268,6 @@ Entity:setParent(parent: Entity, offset: vector?, boneName: string?, fitProp: bo
 ```luau
 -- Parent with local offset
 sword:setParent(player, vector.create(0, 0.2, 0))
-
 -- Parent to a hand bone and try to auto-fit
 sword:setParent(player, vector.create(0, 0, 0), "RightHand", true)
 ```
@@ -288,7 +287,6 @@ Entity:clearParent(): void
 
 ### Notes
 - If the entity has no parent, this is a no-op.
-- Raises an error if detaching fails due to missing internal parenting data.
 - If the entity was previously glued, compound physics for parent and child are rebuilt and reactivated.
 
 ## attachComponent

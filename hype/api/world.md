@@ -1,4 +1,9 @@
 # World
+## Summary
+Functions for interacting with the 3D world, such as spawning and destroying entities, playing audio, and querying world data.
+
+## Details
+Tags are case-insensitive strings assigned to entities for categorization and retrieval. It is good practice to add tags to entities for easier management.
 
 ## API Reference
 

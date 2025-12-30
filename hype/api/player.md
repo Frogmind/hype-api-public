@@ -135,3 +135,21 @@ hype.player.registerSkin(prefab: Entity): ()
 local skinPrefab = hype.asset.findPrefab("MyPlayerSkin")
 hype.player.registerSkin(skinPrefab)
 ```
+
+## attachPrefab
+
+Spawns a prefab by name and attaches it to the local player's entity.
+
+### Signature
+
+```luau
+hype.player.attachPrefab(name: string, position: vector): Entity?
+```
+
+### Parameters
+- name - prefab name registered in the world
+- position - local offset position relative to the player to attach at
+
+### Notes
+- Returns the spawned entity or nil on failure
+- Uses built-in spawn/attach so it can be synced by multiplayer when enabled
