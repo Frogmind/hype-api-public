@@ -4,6 +4,7 @@ Functions for interacting with the 3D world, such as spawning and destroying ent
 
 ## Details
 Tags are case-insensitive strings assigned to entities for categorization and retrieval. It is good practice to add tags to entities for easier management.
+Entities can have multiple tags, and tags can be added or removed at runtime.
 
 ## API Reference
 
