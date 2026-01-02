@@ -31,7 +31,7 @@ Subscribe to joystick touch start.
 ### Signature
 
 ```luau
-controlsJoystick:onStart(component: ComponentInstance, callback: function(component: ComponentInstance, event: { source: joystickComponent })): Subscription
+controlsJoystick:onStart(component: ComponentInstance, callback: (component: ComponentInstance, event: { source: joystickComponent }) -> ()): Subscription
 ```
 
 ## onEnd
@@ -41,7 +41,7 @@ Subscribe to joystick touch end.
 ### Signature
 
 ```luau
-controlsJoystick:onEnd(component: ComponentInstance, callback: function(component: ComponentInstance, event: { source: joystickComponent })): Subscription
+controlsJoystick:onEnd(component: ComponentInstance, callback: (component: ComponentInstance, event: { source: joystickComponent }) -> ()): Subscription
 ```
 
 ## onMove
@@ -51,7 +51,7 @@ Subscribe to joystick movement updates.
 ### Signature
 
 ```luau
-controlsJoystick:onMove(component: ComponentInstance, callback: function(component: ComponentInstance, event: { source: joystickComponent, magnitude: number, x: number, y: number, angle: number })): Subscription
+controlsJoystick:onMove(component: ComponentInstance, callback: (component: ComponentInstance, event: { source: joystickComponent, magnitude: number, x: number, y: number, angle: number }) -> ()): Subscription
 ```
 
 ## setColor
@@ -61,7 +61,7 @@ Sets the RGBA color override for a joystick control.
 ### Signature
 
 ```luau
-controlsJoystick:setColor(color: vector4): ()
+controlsJoystick:setColor(color: vector): ()
 ```
 
 ## setAppearance
@@ -320,7 +320,7 @@ Sets icon color override (RGBA).
 ### Signature
 
 ```luau
-controlsJoystick:setIconColor(color: vector4): ()
+controlsJoystick:setIconColor(color: vector): ()
 ```
 
 ## getIconColor
@@ -330,7 +330,7 @@ Gets resolved icon color.
 ### Signature
 
 ```luau
-controlsJoystick:getIconColor(): vector4
+controlsJoystick:getIconColor(): vector
 ```
 
 ## setIcon

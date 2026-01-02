@@ -358,7 +358,7 @@ Gets the button border color.
 ### Signature
 
 ```luau
-Button:getColor(): vector4
+Button:getColor(): vector
 ```
 
 ## getPosition
@@ -441,7 +441,7 @@ Sets the button border color.
 ### Signature
 
 ```luau
-Button:setColor(color: vector4): ()
+Button:setColor(color: vector): ()
 ```
 
 ## setPosition
@@ -583,7 +583,7 @@ Sets the text color of the button.
 ### Signature
 
 ```luau
-Button:setTextColor(color: vector4): ()
+Button:setTextColor(color: vector): ()
 ```
 
 ## setBorderColor
@@ -593,7 +593,7 @@ Sets the border color of the button.
 ### Signature
 
 ```luau
-Button:setBorderColor(color: vector4): ()
+Button:setBorderColor(color: vector): ()
 ```
 
 ## setVisible
@@ -666,7 +666,7 @@ Sets pressed-state color.
 ### Signature
 
 ```luau
-Button:setPressedColor(color: vector4): ()
+Button:setPressedColor(color: vector): ()
 ```
 
 ### Notes
@@ -814,7 +814,7 @@ Subscribes to button press start.
 ### Signature
 
 ```luau
-Button:onStart(component: ComponentInstance, callback: function(component: ComponentInstance, event: { source: Button, touchId: number, x: number, y: number, xLocal: number, yLocal: number })): Subscription
+Button:onStart(component: ComponentInstance, callback: (component: ComponentInstance, event: { source: Button, touchId: number, x: number, y: number, xLocal: number, yLocal: number }) -> ()): Subscription
 ```
 
 ## onEnd
@@ -824,7 +824,7 @@ Subscribes to button press end.
 ### Signature
 
 ```luau
-Button:onEnd(component: ComponentInstance, callback: function(component: ComponentInstance, event: { source: Button, touchId: number, x: number, y: number, xLocal: number, yLocal: number })): Subscription
+Button:onEnd(component: ComponentInstance, callback: (component: ComponentInstance, event: { source: Button, touchId: number, x: number, y: number, xLocal: number, yLocal: number }) -> ()): Subscription
 ```
 
 ## onMove
@@ -834,7 +834,7 @@ Subscribes to button move (2D touch).
 ### Signature
 
 ```luau
-Button:onMove(component: ComponentInstance, callback: function(component: ComponentInstance, event: { source: Button, touchId: number, x: number, y: number, xLocal: number, yLocal: number })): Subscription
+Button:onMove(component: ComponentInstance, callback: (component: ComponentInstance, event: { source: Button, touchId: number, x: number, y: number, xLocal: number, yLocal: number }) -> ()): Subscription
 ```
 
 ## onMove3D
@@ -844,7 +844,7 @@ Subscribes to button move with 3D raycast info.
 ### Signature
 
 ```luau
-Button:onMove3D(component: ComponentInstance, callback: function(component: ComponentInstance, event: { source: Button, touchId: number, position: vector, hit: boolean, entity?: Entity })): Subscription
+Button:onMove3D(component: ComponentInstance, callback: (component: ComponentInstance, event: { source: Button, touchId: number, position: vector, hit: boolean, entity?: Entity }) -> ()): Subscription
 ```
 
 ### Notes
@@ -967,7 +967,7 @@ Gets the text color.
 ### Signature
 
 ```luau
-Text:getColor(): vector4
+Text:getColor(): vector
 ```
 
 ## getPosition
@@ -1060,7 +1060,7 @@ Sets the text color.
 ### Signature
 
 ```luau
-Text:setColor(color: vector4): ()
+Text:setColor(color: vector): ()
 ```
 
 ## setPosition
@@ -1592,7 +1592,7 @@ Sets the panel color (Border layout only).
 ### Signature
 
 ```luau
-Layout:setColor(color: vector4): ()
+Layout:setColor(color: vector): ()
 ```
 
 ### Notes
@@ -1721,7 +1721,7 @@ Sets border color (Border layout only).
 ### Signature
 
 ```luau
-Layout:setBorderColor(color: vector4): ()
+Layout:setBorderColor(color: vector): ()
 ```
 
 ## setImage
@@ -2016,7 +2016,7 @@ Gets bar color.
 ### Signature
 
 ```luau
-ProgressBar:getBarColor(): vector4
+ProgressBar:getBarColor(): vector
 ```
 
 ## getBackgroundColor
@@ -2026,7 +2026,7 @@ Gets background color.
 ### Signature
 
 ```luau
-ProgressBar:getBackgroundColor(): vector4
+ProgressBar:getBackgroundColor(): vector
 ```
 
 ## getBorderColor
@@ -2036,7 +2036,7 @@ Gets border color.
 ### Signature
 
 ```luau
-ProgressBar:getBorderColor(): vector4
+ProgressBar:getBorderColor(): vector
 ```
 
 ## getBorderWidth
@@ -2199,7 +2199,7 @@ Sets bar color.
 ### Signature
 
 ```luau
-ProgressBar:setBarColor(color: vector4): ()
+ProgressBar:setBarColor(color: vector): ()
 ```
 
 ## setBackgroundColor
@@ -2209,7 +2209,7 @@ Sets background color.
 ### Signature
 
 ```luau
-ProgressBar:setBackgroundColor(color: vector4): ()
+ProgressBar:setBackgroundColor(color: vector): ()
 ```
 
 ## setBorderColor
@@ -2219,7 +2219,7 @@ Sets border color.
 ### Signature
 
 ```luau
-ProgressBar:setBorderColor(color: vector4): ()
+ProgressBar:setBorderColor(color: vector): ()
 ```
 
 ## setBorderWidth
@@ -2484,7 +2484,7 @@ Gets bar color.
 ### Signature
 
 ```luau
-ProgressCircle:getBarColor(): vector4
+ProgressCircle:getBarColor(): vector
 ```
 
 ## getOutlineColor
@@ -2494,7 +2494,7 @@ Gets outline color.
 ### Signature
 
 ```luau
-ProgressCircle:getOutlineColor(): vector4
+ProgressCircle:getOutlineColor(): vector
 ```
 
 ## getOutlineThickness
@@ -2677,7 +2677,7 @@ Sets bar color.
 ### Signature
 
 ```luau
-ProgressCircle:setBarColor(color: vector4): ()
+ProgressCircle:setBarColor(color: vector): ()
 ```
 
 ## setOutlineColor
@@ -2687,7 +2687,7 @@ Sets outline color.
 ### Signature
 
 ```luau
-ProgressCircle:setOutlineColor(color: vector4): ()
+ProgressCircle:setOutlineColor(color: vector): ()
 ```
 
 ## setOutlineThickness
@@ -2879,7 +2879,7 @@ Gets the text color.
 ### Signature
 
 ```luau
-TextArea:getColor(): vector4
+TextArea:getColor(): vector
 ```
 
 ## getPosition
@@ -2949,7 +2949,7 @@ Sets the text color.
 ### Signature
 
 ```luau
-TextArea:setColor(color: vector4): ()
+TextArea:setColor(color: vector): ()
 ```
 
 ## setPosition
@@ -3227,7 +3227,7 @@ Gets the color.
 ### Signature
 
 ```luau
-Image:getColor(): vector4
+Image:getColor(): vector
 ```
 
 ## getPosition
@@ -3317,7 +3317,7 @@ Sets the color.
 ### Signature
 
 ```luau
-Image:setColor(color: vector4): ()
+Image:setColor(color: vector): ()
 ```
 
 ## setPosition

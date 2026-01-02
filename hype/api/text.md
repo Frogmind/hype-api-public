@@ -38,7 +38,7 @@ Opens a text input dialog.
 ### Signature
 
 ```luau
-hype.text.textInput(type: string, maxLength: number, onSubmit: function(value: string|number), onDismiss: function()? ): ()
+hype.text.textInput(type: string, maxLength: number, onSubmit: (value: string|number) -> (), onDismiss: (()->())? ): ()
 ```
 
 ### Parameters
@@ -110,7 +110,7 @@ Gets the resolved color (RGBA).
 ### Signature
 
 ```luau
-TextComponent:getColor(): vector4
+TextComponent:getColor(): vector
 ```
 
 ## setColor
@@ -120,7 +120,7 @@ Sets the color override (RGBA).
 ### Signature
 
 ```luau
-TextComponent:setColor(color: vector4): ()
+TextComponent:setColor(color: vector): ()
 ```
 
 ### Parameters
