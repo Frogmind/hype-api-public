@@ -7,6 +7,9 @@ Types:
 - Type.Static: For entities that don't move, but can collide with physical entities
 - Type.Kinematic: For entities that are moved by logic outside physics simulation
 - Type.Dynamic: For entities that are simulated by the physics engine
+```luau
+type Type = { Static: number, Kinematic: number, Dynamic: number }
+```
 
 ## API Reference
 
@@ -371,16 +374,6 @@ Enables or disables sensor mode.
 EntityPhysics:setSensor(enabled: boolean): ()
 ```
 
-## isStartSleeping
-
-Returns whether the body should start sleeping.
-
-### Signature
-
-```luau
-EntityPhysics:isStartSleeping(): boolean
-```
-
 ## isLimitMovementX
 
 Returns if linear movement along X is limited.
@@ -501,26 +494,6 @@ Enables/disables angular turning limit around Z.
 EntityPhysics:setLimitTurningZ(enabled: boolean): ()
 ```
 
-## isScaledMass
-
-Returns whether scaled mass is enabled.
-
-### Signature
-
-```luau
-EntityPhysics:isScaledMass(): boolean
-```
-
-## setScaledMass
-
-Enables/disables scaled mass. Not implemented.
-
-### Signature
-
-```luau
-EntityPhysics:setScaledMass(enabled: boolean): ()
-```
-
 ## isContinuousCollision
 
 Returns whether continuous collision detection (CCD) is enabled.
@@ -539,66 +512,6 @@ Enables/disables continuous collision detection (CCD).
 
 ```luau
 EntityPhysics:setContinuousCollision(enabled: boolean): ()
-```
-
-## isPhysicalParticle
-
-Returns whether the body is treated as a physical particle.
-
-### Signature
-
-```luau
-EntityPhysics:isPhysicalParticle(): boolean
-```
-
-## setPhysicalParticle
-
-Enables/disables physical particle mode. Not implemented.
-
-### Signature
-
-```luau
-EntityPhysics:setPhysicalParticle(enabled: boolean): ()
-```
-
-## isUltraQualityCollisions
-
-Returns whether enhanced edge removal (ultra-quality collisions) is enabled.
-
-### Signature
-
-```luau
-EntityPhysics:isUltraQualityCollisions(): boolean
-```
-
-## setUltraQualityCollisions
-
-Enables/disables ultra-quality collisions. Not implemented.
-
-### Signature
-
-```luau
-EntityPhysics:setUltraQualityCollisions(enabled: boolean): ()
-```
-
-## isAlwaysActive
-
-Returns whether the body should always simulate (never sleep).
-
-### Signature
-
-```luau
-EntityPhysics:isAlwaysActive(): boolean
-```
-
-## setAlwaysActive
-
-Enables/disables always-active simulation. Not implemented.
-
-### Signature
-
-```luau
-EntityPhysics:setAlwaysActive(enabled: boolean): ()
 ```
 
 ## getCollisionGroup
