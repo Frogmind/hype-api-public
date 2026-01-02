@@ -3,12 +3,11 @@
 ## sphereCast
 
 Casts a sphere along a ray and returns hit records (or an empty table if no hit).
-{ { entity: Entity?, position: vector, normal: vector }? }
 
 ### Signature
 
 ```luau
-hype.physics.sphereCast(origin: vector, ray: vector, radius: number, extraParams: { groupFilter: {number}?, ignoreGroupFilter: {number}?, ignoredEntities: {Entity}? }?):
+hype.physics.sphereCast(origin: vector, ray: vector, radius: number, extraParams: { groupFilter: {number}?, ignoreGroupFilter: {number}?, ignoredEntities: {Entity}? }?): { { entity: Entity?, position: vector, normal: vector }? }
 ```
 
 ### Parameters

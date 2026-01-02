@@ -47,12 +47,11 @@ controlsJoystick:onEnd(component: ComponentInstance, callback: function(componen
 ## onMove
 
 Subscribe to joystick movement updates.
-number, y: number, angle: number })): Subscription
 
 ### Signature
 
 ```luau
-controlsJoystick:onMove(component: ComponentInstance, callback: function(component: ComponentInstance, event: { source: joystickComponent, magnitude: number, x:
+controlsJoystick:onMove(component: ComponentInstance, callback: function(component: ComponentInstance, event: { source: joystickComponent, magnitude: number, x: number, y: number, angle: number })): Subscription
 ```
 
 ## setColor

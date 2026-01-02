@@ -28,19 +28,6 @@ hype.ui.find(entity: Entity): UIWidget
 - Returns a UIWidget handle used to access children and properties
 - Errors if no UI widget is found
 
-## getUI
-
-Deprecated alias for hype.ui.find.
-
-### Signature
-
-```luau
-hype.ui.getUI(...): UIWidget
-```
-
-### Notes
-- Deprecated: use hype.ui.find(...) instead
-
 ## createButton
 
 Creates a Button widget under the root UI and returns its handle.
@@ -268,7 +255,7 @@ UIWidget:findChild(name: string): (Layout|Button|Text|ProgressBar|ProgressCircle
 - name - child widget name
 
 ### Notes
-- Searches recursively under the widgetâ€™s root canvas
+- Searches recursively under the widget's root canvas
 - Errors if the child is not found
 
 ## getLayout
@@ -823,48 +810,41 @@ Button:setPassTouchThrough(enabled: boolean): ()
 ## onStart
 
 Subscribes to button press start.
-number, yLocal: number
-})): Subscription
 
 ### Signature
 
 ```luau
-Button:onStart(component: ComponentInstance, callback: function(component: ComponentInstance, event: { source: Button, touchId: number, x: number, y: number, xLocal:
+Button:onStart(component: ComponentInstance, callback: function(component: ComponentInstance, event: { source: Button, touchId: number, x: number, y: number, xLocal: number, yLocal: number })): Subscription
 ```
 
 ## onEnd
 
 Subscribes to button press end.
-number, yLocal: number
-})): Subscription
 
 ### Signature
 
 ```luau
-Button:onEnd(component: ComponentInstance, callback: function(component: ComponentInstance, event: { source: Button, touchId: number, x: number, y: number, xLocal:
+Button:onEnd(component: ComponentInstance, callback: function(component: ComponentInstance, event: { source: Button, touchId: number, x: number, y: number, xLocal: number, yLocal: number })): Subscription
 ```
 
 ## onMove
 
 Subscribes to button move (2D touch).
-number, yLocal: number
-})): Subscription
 
 ### Signature
 
 ```luau
-Button:onMove(component: ComponentInstance, callback: function(component: ComponentInstance, event: { source: Button, touchId: number, x: number, y: number, xLocal:
+Button:onMove(component: ComponentInstance, callback: function(component: ComponentInstance, event: { source: Button, touchId: number, x: number, y: number, xLocal: number, yLocal: number })): Subscription
 ```
 
 ## onMove3D
 
 Subscribes to button move with 3D raycast info.
-boolean, entity?: Entity })): Subscription
 
 ### Signature
 
 ```luau
-Button:onMove3D(component: ComponentInstance, callback: function(component: ComponentInstance, event: { source: Button, touchId: number, position: vector, hit:
+Button:onMove3D(component: ComponentInstance, callback: function(component: ComponentInstance, event: { source: Button, touchId: number, position: vector, hit: boolean, entity?: Entity })): Subscription
 ```
 
 ### Notes
@@ -872,12 +852,12 @@ Button:onMove3D(component: ComponentInstance, callback: function(component: Comp
 
 ## remove
 
-Removes the text widget and its children from UI.
+Removes the button and its children from UI.
 
 ### Signature
 
 ```luau
-Text:remove(): ()
+Button:remove(): ()
 ```
 
 ## setAlignment

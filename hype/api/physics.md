@@ -105,12 +105,11 @@ hype.physics.addTorque(e, vector.create(0, 10, 0), { isLocal = true })
 ## overlapSphere
 
 Returns entities whose colliders intersect a sphere.
-{Entity}
 
 ### Signature
 
 ```luau
-hype.physics.overlapSphere(position: vector, radius: number, extraParams: { groupFilter: {number}?, sortResultsByDistance: boolean?, ignoredEntities: {Entity}? }?):
+hype.physics.overlapSphere(position: vector, radius: number, extraParams: { groupFilter: {number}?, sortResultsByDistance: boolean?, ignoredEntities: {Entity}? }?): {Entity}
 ```
 
 ### Parameters
@@ -134,12 +133,11 @@ local hits = hype.physics.overlapSphere(vector.create(0,2,0), 1.5, { sortResults
 ## overlapBox
 
 Returns entities whose colliders intersect an axis-aligned box.
-{Entity}
 
 ### Signature
 
 ```luau
-hype.physics.overlapBox(position: vector, halfSize: vector, extraParams: { groupFilter: {number}?, sortResultsByDistance: boolean?, ignoredEntities: {Entity}? }?):
+hype.physics.overlapBox(position: vector, halfSize: vector, extraParams: { groupFilter: {number}?, sortResultsByDistance: boolean?, ignoredEntities: {Entity}? }?): {Entity}
 ```
 
 ### Parameters
@@ -223,12 +221,11 @@ hype.physics.attach(entity: Entity, type: Type?): EntityPhysics
 ## raycast
 
 Casts a ray and returns a hit record (or an empty table if no hit).
-Entity?, position: vector, normal: vector }? }
 
 ### Signature
 
 ```luau
-hype.physics.raycast(origin: vector, ray: vector, extraParams: { groupFilter: {number}?, ignoreGroupFilter: {number}?, ignoredEntities: {Entity}? }?): { { entity:
+hype.physics.raycast(origin: vector, ray: vector, extraParams: { groupFilter: {number}?, ignoreGroupFilter: {number}?, ignoredEntities: {Entity}? }?): { { entity: Entity?, position: vector, normal: vector }? }
 ```
 
 ### Parameters
