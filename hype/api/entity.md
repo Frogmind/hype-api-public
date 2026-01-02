@@ -35,22 +35,22 @@ Entity:getName(): string
 
 ## addTag
 
-Adds the given tag to the entity.
+Adds the given tag(s) to the entity.
 
 ### Signature
 
 ```luau
-Entity:addTag(tag: string): ()
+Entity:addTag(tag: string, ...: string): ()
 ```
 
 ## removeTag
 
-Removes the given tag from the entity.
+Removes the given tag(s) from the entity.
 
 ### Signature
 
 ```luau
-Entity:removeTag(tag: string): ()
+Entity:removeTag(tag: string, ...: string): ()
 ```
 
 ## getTags
